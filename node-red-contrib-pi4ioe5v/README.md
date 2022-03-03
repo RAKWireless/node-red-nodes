@@ -2,7 +2,7 @@
 
 node-red-contrib-pi4ioe5v node is  IO expander Node-RED node running on raspberry pi.  Its chip is  PI4IOE5V96224 which can expand 24 IO pin with i2c interface.
 
-For most Pi this is 1 for /dev/i2c-1, or 0 for /dev/i2c-0 for a older rev 1 Pi.
+![image-20220302171903406](assets/image-20220302171903406.png)
 
 ## Install
 
@@ -24,9 +24,55 @@ Provides two nodes - one to receive IO state, and one to set IO state.
 
 PI4IOE5VXXX IO expander input node. Generates a `msg.payload` with either a 0 or 1 depending on the state of the input pin.
 
+![image-20220303170537835](assets/image-20220303170537835.png)
+
+**Name**
+
+Define the msg name if you wish to change the name displayed on the node.
+
+**Bus**
+
+Default I2C Bus is 1.  `1` is for `'/dev/i2c-1'`.
+
+**Address**
+
+The Address by default is set to 0x20. You can setup the PI4IOE5V96224 address according to your hardware. Please see  PI4IOE5V96224 documentation for more information.
+
+**IO**
+
+Select one pin whose state you what get.
+
+**Interval**
+
+The interval between obtaining the state of selected pin,  its unit in ms. Default value is 1000 ms.
+
+
+
 ### pi4ioe5v out
 
 PI4IOE5VXXX IO expander output node. Set specific IO pin as  0 or 1. 
+
+![image-20220303171847690](assets/image-20220303171847690.png)
+
+
+
+**Name**
+
+Define the msg name if you wish to change the name displayed on the node.
+
+**Bus**
+
+Default I2C Bus is 1.  `1` is for `'/dev/i2c-1'`.
+
+**Address**
+
+The Address by default is set to 0x20. You can setup the PI4IOE5V96224 address according to your hardware. Please see  PI4IOE5V96224 documentation for more information.
+
+**IO**
+
+Select one pin whose state you what set.
+
+
 
 ## Example
 
@@ -97,3 +143,8 @@ Import the json file to Node-RED then deploy the flow.
 
 The example shows how to toggle the LED which connects to IO0_7 pin of PI4IOE5V96224.
 
+
+
+## License
+
+This project is licensed under MIT license.
