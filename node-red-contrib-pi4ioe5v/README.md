@@ -6,14 +6,14 @@ For most Pi this is 1 for /dev/i2c-1, or 0 for /dev/i2c-0 for a older rev 1 Pi.
 
 ## Install
 
-Enter Node-RED user directory - typically `~/.node-red` , download repository and install it with following commands.
+Please install `node-red-contrib-pi4ioe5v` node with the following commands. If you use docker of Node-RED, you may need to replace `~/.node-red` with `/usr/src/node-red`.
 
 ```
-cd ~/.node-red/node_modules && git clone {repository address}
+git clone {repository address} && cp -rf node-red-contrib-pi4ioe5v ~/.node-red/node_modules
 ```
 
 ```
-cd node-red-contrib-pi4ioe5v && npm install
+cd ~/.node-red/node_modules/node-red-contrib-pi4ioe5v && npm install
 ```
 
 ## Usage
