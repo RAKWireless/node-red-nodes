@@ -1,0 +1,186 @@
+<script type="text/x-red" data-template-name="ads7830_i2c">
+
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-i2c_device_number"><i class="fa fa-cog"></i> /dev/i2c-?</label>
+        <input type="text" id="node-input-i2c_device_number" style="width: 30%" placeholder="1">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-i2c_address"><i class="fa fa-cog"></i> i2c Address</label>
+        <select id="node-input-i2c_address">
+            <option value="0x48">0x48</option>
+            <option value="0x49">0x49</option>
+            <option value="0x4A" selected>0x4A</option>
+            <option value="0x4B">0x4B</option>
+        </select>
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-inputsForChannel"><i class="fa fa-cog"></i> Inputs</label>
+        <select id="node-input-inputsForChannel">
+          <option value="singleEnded">Single Ended</option>
+          <option value="differential">Differential</option>
+        </select>
+    </div>
+    <div class="form-row node-type-singleEndedChannelSelections">
+        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<label>Channel 0</label>
+        &emsp;<input type="checkbox" id="node-input-singleEndedChannel0" 
+			style="display:inline-block; width:20px; vertical-align:baseline;" checked>
+        <br>
+        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<label>Channel 1</label>
+        &emsp;<input type="checkbox" id="node-input-singleEndedChannel1" 
+			style="display:inline-block; width:20px; vertical-align:baseline;">
+        <br>
+        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<label>Channel 2</label>
+        &emsp;<input type="checkbox" id="node-input-singleEndedChannel2" 
+			style="display:inline-block; width:20px; vertical-align:baseline;">
+        <br>
+        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<label>Channel 3</label>
+        &emsp;<input type="checkbox" id="node-input-singleEndedChannel3" 
+			style="display:inline-block; width:20px; vertical-align:baseline;">
+        <br>
+		&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<label>Channel 4</label>
+        &emsp;<input type="checkbox" id="node-input-singleEndedChannel4" 
+			style="display:inline-block; width:20px; vertical-align:baseline;">
+		<br>
+		&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<label>Channel 5</label>
+        &emsp;<input type="checkbox" id="node-input-singleEndedChannel5" 
+			style="display:inline-block; width:20px; vertical-align:baseline;">
+		<br>
+		&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<label>Channel 6</label>
+        &emsp;<input type="checkbox" id="node-input-singleEndedChannel6" 
+			style="display:inline-block; width:20px; vertical-align:baseline;">
+		<br>
+		&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<label>Channel 7</label>
+        &emsp;<input type="checkbox" id="node-input-singleEndedChannel7" 
+			style="display:inline-block; width:20px; vertical-align:baseline;">
+    </div>
+    <div class="form-row node-type-differentialSelections">
+        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<label>Channel 0 & 1</label>
+        &emsp;<input type="checkbox" id="node-input-differentialChannel0_1" 
+			style="display:inline-block; width:20px; vertical-align:baseline;" checked>
+        <br>
+        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<label>Channel 2 & 3</label>
+        &emsp;<input type="checkbox" id="node-input-differentialChannel2_3" 
+			style="display:inline-block; width:20px; vertical-align:baseline;">
+        <br>
+        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<label>Channel 4 & 5</label>
+        &emsp;<input type="checkbox" id="node-input-differentialChannel4_5" 
+			style="display:inline-block; width:20px; vertical-align:baseline;">
+        <br>
+        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<label>Channel 6 & 7</label>
+        &emsp;<input type="checkbox" id="node-input-differentialChannel6_7" 
+			style="display:inline-block; width:20px; vertical-align:baseline;">
+        <br>
+		&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<label>Channel 1 & 0</label>
+        &emsp;<input type="checkbox" id="node-input-differentialChannel1_0" 
+			style="display:inline-block; width:20px; vertical-align:baseline;">
+        <br>
+        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<label>Channel 3 & 2</label>
+        &emsp;<input type="checkbox" id="node-input-differentialChannel3_2" 
+			style="display:inline-block; width:20px; vertical-align:baseline;">
+        <br>
+        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<label>Channel 5 & 4</label>
+        &emsp;<input type="checkbox" id="node-input-differentialChannel5_4" 
+			style="display:inline-block; width:20px; vertical-align:baseline;">
+        <br>
+        &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<label>Channel 7 & 6</label>
+        &emsp;<input type="checkbox" id="node-input-differentialChannel7_6" 
+			style="display:inline-block; width:20px; vertical-align:baseline;">
+	</div>
+    <div class="form-row node-type-IC_ADS7830_selections">
+        <label><i class="fa fa-cog"></i> Internal Reference</label>
+        <select id="node-input-internalReferenceOnOff">
+            <option value="1">ON</option>
+            <option value="0" selected>OFF</option>
+        </select>
+    </div>
+    <div class="form-row node-type-IC_ADS7830_selections">
+        <label><i class="fa fa-cog"></i> A/D Converter</label>
+        <select id="node-input-ADConverterOnOff">
+            <option value="1" selected>ON</option>
+            <option value="0">OFF</option>
+        </select>
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="ads7830_i2c">
+    <p>A node-red node providing access to a ADS7830 I2C analog to digital converter.</p>
+    <p><strong>Name:</strong><br/>
+    Define the msg name if you wish to change the name displayed on the node.</p>
+    <p><strong>/dev/i2c-?</strong><br/>
+    The i2c Device # - Device number by default is set to 1. This is the number for most current raspberry pi's. i2c device numbers can range from 0 to 256.</p>
+    <p><strong>i2c Address:</strong><br/>
+    The Address by default is set to 0x4a. You can setup the ADS7830 with one of four addresses, 0x48, 0x49, 0x4a, 0x4b. Please see ADS7830 documentation for more information.</p>
+    <p><strong>Internal Reference:</strong><br/>
+    Open or close internal Reference in chip</p></br>
+    <p><strong>Internal Reference:</strong><br/>
+    Open or close A/D Converter in chip</p>
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType("ads7830", {
+        category: "rakwireless",
+        defaults: {
+            name: {value:""},
+            i2c_device_number: {value:1,validate:RED.validators.number()},
+            i2c_address: {value:"0x4A"},
+            inputsForChannel: {value:"singleEnded"},
+            singleEndedChannel0: {value: true},
+            singleEndedChannel1: {value: false},
+            singleEndedChannel2: {value: false},
+            singleEndedChannel3: {value: false},
+            singleEndedChannel4: {value: false},
+            singleEndedChannel5: {value: false},
+            singleEndedChannel6: {value: false},
+            singleEndedChannel7: {value: false},
+            differentialChannel0_1: {value: true},
+            differentialChannel2_3: {value: false},
+            differentialChannel4_5: {value: false},
+            differentialChannel6_7: {value: false},
+			differentialChannel1_0: {value: false},
+            differentialChannel3_2: {value: false},
+            differentialChannel5_4: {value: false},
+            differentialChannel7_6: {value: false},
+            internalReferenceOnOff: {value:"0"},
+            ADConverterOnOff: {value:"1"}
+        },
+        color:"#FFCC66",
+        inputs: 1,
+        outputs: 1,
+        icon: "Raspberry Pi",
+        label: function() {
+            return this.name || "ads7830_i2c";
+        },
+        labelStyle: function() {
+            return this.name ? "node_label_italic" : "";
+        },
+        oneditprepare: function() {
+            $("#node-input-inputsForChannel").change(function(){
+              if ($(this).val() == "singleEnded")
+              {
+                $(".node-type-differentialSelections").hide();
+                $(".node-type-singleEndedChannelSelections").show();
+              }
+              else
+              {
+                $(".node-type-singleEndedChannelSelections").hide();
+                $(".node-type-differentialSelections").show();
+              }
+            });
+
+            this.i2c_device_number = !this.i2c_device_number ? 1 : this.i2c_device_number;
+            this.inputsForChannel = !this.inputsForChannel ? "singleEnded" : this.inputsForChannel
+            this.ADConverterOnOff = !this.ADConverterOnOff ? "1" : this.ADConverterOnOff
+            this.internalReferenceOnOff = !this.internalReferenceOnOff ? "0" : this.internalReferenceOnOff
+            this.i2c_address = !this.i2c_address ? "0x4A" : this.i2c_address;
+        },
+        oneditsave: function () {
+        }
+    });
+</script>
