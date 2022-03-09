@@ -65,7 +65,7 @@ Import the json file to Node-RED then deploy the flow.
         "name": "",
         "i2c_device_number": 1,
         "i2c_address": "0x4A",
-        "inputsForChannel": "differential",
+        "inputsForChannel": "singleEnded",
         "singleEndedChannel0": true,
         "singleEndedChannel1": true,
         "singleEndedChannel2": true,
