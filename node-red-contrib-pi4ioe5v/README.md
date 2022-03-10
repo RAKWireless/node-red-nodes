@@ -30,7 +30,7 @@ Provides two nodes - one to receive IO state, and one to set IO state.
 
 PI4IOE5VXXX IO expander input node. Generates a `msg.payload` with either a 0 or 1 depending on the state of the input pin.
 
-<img src="assets/image-20220303170537835.png" alt="image-20220303170537835" style="zoom:80%;" />
+<img src="assets/image-20220310143705111.png" alt="image-20220310143705111" style="zoom:80%;" />
 
 - **Name**
 
