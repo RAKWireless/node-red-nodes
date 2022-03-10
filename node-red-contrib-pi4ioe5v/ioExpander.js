@@ -8,7 +8,6 @@ module.exports = function(RED) {
         this.name = n.name || "";
         this.bus = n.bus;
         this.address = n.address;
-        this.interval = n.interval;
         this.status({});
 
         this.port = Math.floor(n.pin / 8);
@@ -26,15 +25,13 @@ module.exports = function(RED) {
             node.warn(RED._("pi4ioe5v:errors.invalidpin"));
         }
 
-        //poll reading at interval
-        node.timer = setInterval(() => {
-            msg.payload = IoExpander.getOnePinVal(node.port, node.pin);
+		node.on('input', function() {
+			msg.payload = IoExpander.getOnePinVal(node.port, node.pin);
             node.send(msg);
-        }, node.interval);
+		});
 
         //clear interval on exit
         node.on('close', function() {
-            clearInterval(node.timer);
             node.status({fill:"grey",shape:"ring",text:"pi4ioe5v.status.closed"});
             node.cb.cancel();
             IoExpander.close();

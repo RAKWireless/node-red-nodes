@@ -113,10 +113,6 @@
             </div>
         </div>
     </div>
-    <div class="form-row">
-        <label for="node-input-interval"><i class="fa fa-refresh"></i> Interval (ms)</label>
-        <input type="text" id="node-input-interval" placeholder="1000">
-    </div>
 </script>
 
 <script type="text/javascript">
@@ -133,14 +129,9 @@
                 value: '0x20',
                 required: true
             },
-            pin: { value:"", required:true, validate:RED.validators.number() },
-            interval: {
-                value: 1000,
-                required: true,
-                validate: RED.validators.number()
-            }
+            pin: { value:"", required:true, validate:RED.validators.number() }
         },
-        inputs:0,
+        inputs:1,
         outputs:1,
         icon: "rpi.png",
         labelStyle: function() {
@@ -149,9 +140,6 @@
         outputLabels: function() { return "IO"+this.pin; },
         paletteLabel: "pi4ioe5v in",
         oneditprepare: function() {
-            var pinnow = this.pin;
-            var pintip = this._("pi4ioe5v.tip.pin");
-            var pinname = this._("pi4ioe5v.pinname");
             $('.pinTableBody input').on('change', function() {
                 this.pin = $(".pinTableBody input[type='radio']:checked").val();
                 $("#node-input-pin").val(this.pin);
@@ -285,7 +273,7 @@
 
 <script type="text/javascript">
     RED.nodes.registerType('pi4ioe5v out',{
-        category: 'Raspberry Pi',
+        category: 'rakwireless',
         color:"#c6dbef",
         defaults: {
             name: { value: ""},

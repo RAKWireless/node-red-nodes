@@ -83,7 +83,7 @@ Import the json file to Node-RED then deploy the flow.
 ```
 [
     {
-        "id": "3bc0f3d95be661cb",
+        "id": "d0f4ea7a6c4df086",
         "type": "tab",
         "label": "pi4ioe5v-toggle-led",
         "disabled": false,
@@ -91,38 +91,66 @@ Import the json file to Node-RED then deploy the flow.
         "env": []
     },
     {
-        "id": "fd16c1b19021b336",
-        "type": "pi4ioe5v in",
-        "z": "3bc0f3d95be661cb",
+        "id": "4ab926118dceef89",
+        "type": "inject",
+        "z": "d0f4ea7a6c4df086",
         "name": "",
-        "bus": "1",
-        "address": "0x20",
-        "pin": "7",
-        "interval": "5000",
-        "x": 240,
-        "y": 280,
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "5",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 190,
+        "y": 260,
         "wires": [
             [
-                "14ba9ee6ac8352dc"
+                "c9debbfd7f22adbb"
             ]
         ]
     },
     {
-        "id": "f2260f68abd285f3",
-        "type": "pi4ioe5v out",
-        "z": "3bc0f3d95be661cb",
+        "id": "c9debbfd7f22adbb",
+        "type": "pi4ioe5v in",
+        "z": "d0f4ea7a6c4df086",
         "name": "",
         "bus": "1",
         "address": "0x20",
         "pin": "7",
-        "x": 650,
-        "y": 280,
+        "x": 390,
+        "y": 260,
+        "wires": [
+            [
+                "6c60ba89b4984426"
+            ]
+        ]
+    },
+    {
+        "id": "af19e4e92613bd7d",
+        "type": "pi4ioe5v out",
+        "z": "d0f4ea7a6c4df086",
+        "name": "",
+        "bus": "1",
+        "address": "0x20",
+        "pin": "7",
+        "x": 790,
+        "y": 260,
         "wires": []
     },
     {
-        "id": "14ba9ee6ac8352dc",
+        "id": "6c60ba89b4984426",
         "type": "function",
-        "z": "3bc0f3d95be661cb",
+        "z": "d0f4ea7a6c4df086",
         "name": "toggle_led",
         "func": "let val = parseInt(msg.payload);\nif(val != 0 && val != 1) {\n    log.error('wrong value');\n} else {\n    msg.payload = 1 - msg.payload;\n}\n\nreturn msg;",
         "outputs": 1,
@@ -130,11 +158,11 @@ Import the json file to Node-RED then deploy the flow.
         "initialize": "",
         "finalize": "",
         "libs": [],
-        "x": 450,
-        "y": 280,
+        "x": 590,
+        "y": 260,
         "wires": [
             [
-                "f2260f68abd285f3"
+                "af19e4e92613bd7d"
             ]
         ]
     }
