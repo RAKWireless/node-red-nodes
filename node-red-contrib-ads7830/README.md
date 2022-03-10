@@ -14,11 +14,11 @@ git clone -b dev https://git.rak-internal.net/product-rd/gateway/wis-developer/r
 ```
 
 ```
-cp -rf node-red-nodes/node-red-nodes ~/.node-red/node_modules
+cp -rf node-red-nodes/node-red-contrib-ads7830 ~/.node-red/node_modules
 ```
 
 ```
-cd ~/.node-red/node_modules/node-red-nodes && npm install
+cd ~/.node-red/node_modules/node-red-contrib-ads7830 && npm install
 ```
 
 ## Usage
@@ -47,7 +47,7 @@ To get a voltage or difference of voltage from a ADS7830  analog to digital conv
 
   Open or close internal Reference in chip.
 
-- **Internal Reference**
+- **A/D Converter**
 
   Open or close A/D Converter in chip.
 
