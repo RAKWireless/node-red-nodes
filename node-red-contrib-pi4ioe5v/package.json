@@ -16,7 +16,7 @@
   },
   "node-red": {
     "nodes": {
-      "pi-gpiod": "ioExpander.js"
+      "pi4ioe5v": "ioExpander.js"
     }
   },
   "scripts": {
