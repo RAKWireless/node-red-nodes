@@ -4,6 +4,8 @@ node-red-contrib-pi4ioe5v node is  IO expander Node-RED node running on raspberr
 
 ![image-20220302171903406](assets/image-20220302171903406.png)
 
+**Tips**: Please make sure that user of system has the permissions to access i2c device, or  you cannot get  the result you want when use  pi4ioe5v node.
+
 ## Install
 
 Please install `node-red-contrib-pi4ioe5v` node with the following commands. If you use docker of Node-RED, you may need to replace `~/.node-red` with `/usr/src/node-red`.

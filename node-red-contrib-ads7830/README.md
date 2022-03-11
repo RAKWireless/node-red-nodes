@@ -3,11 +3,13 @@ node-red-contrib-ads7830
 
 A node-red node providing access to a ADS7830 I2C analog to digital converter.
 
+**Tips**: Please make sure that user of system has the permissions to access i2c device, or  you cannot get  the result you want when use ads7830 node,  the result  will be `empty`.
+
 ---
 
 ## Install
 
-Please install `node-red-contrib-pi4ioe5v` node with the following commands. If you use docker of Node-RED, you may need to replace `~/.node-red` with `/usr/src/node-red`.
+Please install `node-red-contrib-ads7830` node with the following commands. If you use docker of Node-RED, you may need to replace `~/.node-red` with `/usr/src/node-red`.
 
 ```
 git clone -b dev https://git.rak-internal.net/product-rd/gateway/wis-developer/rak7391/node-red-nodes.git
@@ -20,6 +22,8 @@ cp -rf node-red-nodes/node-red-contrib-ads7830 ~/.node-red/node_modules
 ```
 cd ~/.node-red/node_modules/node-red-contrib-ads7830 && npm install
 ```
+
+
 
 ## Usage
 
@@ -62,9 +66,17 @@ Import the json file to Node-RED then deploy the flow.
 ```
 [
     {
-        "id": "effbb56fdcfe3e98",
+        "id": "903fc29aeb6467f7",
+        "type": "tab",
+        "label": "rak16001-read",
+        "disabled": false,
+        "info": "The example is to read 8 channels data from ads7830 every 5 seconds with singleEnded mode.",
+        "env": []
+    },
+    {
+        "id": "db4e1e9fea0295f5",
         "type": "ads7830_i2c",
-        "z": "d0f4ea7a6c4df086",
+        "z": "903fc29aeb6467f7",
         "name": "",
         "i2c_device_number": 1,
         "i2c_address": "0x4A",
@@ -88,12 +100,58 @@ Import the json file to Node-RED then deploy the flow.
         "internalReferenceOnOff": "0",
         "ADConverterOnOff": "1",
         "x": 450,
-        "y": 260,
+        "y": 220,
         "wires": [
             [
-                "81b4056d9710d09e"
+                "bbadd339d650ae1c"
             ]
         ]
+    },
+    {
+        "id": "ee3e49e648d66cd5",
+        "type": "inject",
+        "z": "903fc29aeb6467f7",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "5",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 230,
+        "y": 220,
+        "wires": [
+            [
+                "db4e1e9fea0295f5"
+            ]
+        ]
+    },
+    {
+        "id": "bbadd339d650ae1c",
+        "type": "debug",
+        "z": "903fc29aeb6467f7",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 670,
+        "y": 220,
+        "wires": []
     }
 ]
 ```
