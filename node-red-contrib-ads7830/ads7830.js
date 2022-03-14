@@ -26,25 +26,17 @@ const i2c = require('i2c-bus');
     const Differential = '1'  // Single-Ended Inputs
  
 // 2. C2 - C0: Channel Selections (Table 2)
-// channel = '000'  # if sd == 0 Single-Ended, Channel 0; if sd == 1, else Differential, CH0+ CH1-
-// channel = '001'  # if sd == 0 Single-Ended, Channel 1; if sd == 1, else Differential, CH2+ CH3-
-// channel = '010'  # if sd == 0 Single-Ended, Channel 2; if sd == 1, else Differential, CH4+ CH5-
-// channel = '011'  # if sd == 0 Single-Ended, Channel 3; if sd == 1, else Differential, CH6+ CH7-
-// channel = '100'  # if sd == 0 Single-Ended, Channel 4; if sd == 1, else Differential, CH0- CH1+
-// channel = '101'  # if sd == 0 Single-Ended, Channel 5; if sd == 1, else Differential, CH2- CH3+
-// channel = '110'  # if sd == 0 Single-Ended, Channel 6; if sd == 1, else Differential, CH4- CH5+
-// channel = '111'  # if sd == 0 Single-Ended, Channel 7; if sd == 1, else Differential, CH6- CH7+
-    const singleEndChannel = ['000', '001', '010', '011', '100', '101', '110', '111'];
+    const singleEndChannel = ['000', '100', '001', '101', '010', '110', '011', '111'];
     const DifferentialChannel = {
-		"0_1": '000', 
-		"2_3": '001', 
-		"4_5": '010', 
-		"6_7": '011', 
-		"1_0": '100', 
-		"3_2": '101', 
-		"5_4": '110', 
-		"7_6": '111'
-	};
+        "0_1": '000', 
+        "2_3": '001', 
+        "4_5": '010', 
+        "6_7": '011', 
+        "1_0": '100', 
+        "3_2": '101', 
+        "5_4": '110', 
+        "7_6": '111'
+    };
 
 // 3. PD1-0: Power-Down Selection (Table 1)
 // pd = '00'  # Power Down Between A/D Converter Conversions
@@ -65,17 +57,17 @@ module.exports = class ads7830 {
         this.wire = i2c.openSync(device);
     }
 
-	sleep(ms) {
-		return new Promise(resolve => setTimeout(resolve, ms));
-	}
+    sleep(ms) {
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
 
     readSingleEnded(channel, internalReferenceOnOff, ADConverterOnOff) {
         let self = this;
         let command = parseInt(singleEndChannel[channel]
-			+ internalReferenceOnOff + ADConverterOnOff + '00', 2);
+            + internalReferenceOnOff + ADConverterOnOff + '00', 2);
         self.wire.i2cWriteSync(this.i2cAddress, 1, Buffer.from([command]));
-		this.sleep(0.5);
-		let data = Buffer.alloc(1);
+        this.sleep(0.5);
+        let data = Buffer.alloc(1);
         self.wire.i2cReadSync(this.i2cAddress, 1, data);
         return data[0];
     }
@@ -83,10 +75,10 @@ module.exports = class ads7830 {
     readDifferential(channelPositive, channelNegative, internalReferenceOnOff, ADConverterOnOff) {
         let self = this;
         let command = parseInt(DifferentialChannel[channelPositive+'_'+channelNegative]
-			+ internalReferenceOnOff + ADConverterOnOff + '00', 2);
+            + internalReferenceOnOff + ADConverterOnOff + '00', 2);
         self.wire.i2cWriteSync(this.i2cAddress, 1, Buffer.from([command]));
-		this.sleep(0.5);
-		let data = Buffer.alloc(1);
+        this.sleep(0.5);
+        let data = Buffer.alloc(1);
         self.wire.i2cReadSync(this.i2cAddress, 1, data);
         return data[0];
     }
