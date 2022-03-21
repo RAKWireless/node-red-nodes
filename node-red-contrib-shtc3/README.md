@@ -21,6 +21,8 @@ cp -rf node-red-nodes/node-red-contrib-shtc3 ~/.node-red/node_modules
 cd ~/.node-red/node_modules/node-red-contrib-shtc3 && npm install
 ```
 
+**Tips:**  After `node-red-contrib-shtc3` being installed,  **node-red should be restarted**, otherwise, the node cannot be found on the page.
+
 ## Usage
 
 To get value of  temperature and humidity you just need to select the correct settings for your device and trigger the node.
@@ -37,11 +39,11 @@ To get value of  temperature and humidity you just need to select the correct se
 
 - **i2c_Address**
 
-  The Address fo shtc3 is 0x70 which can not be changed. 
+  The Address for shtc3 is 0x70 which can not be changed. 
 
 - **Temperature Unit**
 
-  You can select `Centigrage` or `Fahrenheit` as you like.
+  You can select `Celsius` or `Fahrenheit` as you like.
 
 
 

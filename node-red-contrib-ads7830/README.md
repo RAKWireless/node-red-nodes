@@ -23,7 +23,7 @@ cp -rf node-red-nodes/node-red-contrib-ads7830 ~/.node-red/node_modules
 cd ~/.node-red/node_modules/node-red-contrib-ads7830 && npm install
 ```
 
-
+**Tips:**  After `node-red-contrib-ads7830` being installed,  **node-red should be restarted**, otherwise, the node cannot be found on the page.
 
 ## Usage
 

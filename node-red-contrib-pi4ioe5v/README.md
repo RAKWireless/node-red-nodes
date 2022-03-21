@@ -22,7 +22,7 @@ cp -rf node-red-nodes/node-red-contrib-pi4ioe5v ~/.node-red/node_modules
 cd ~/.node-red/node_modules/node-red-contrib-pi4ioe5v && npm install
 ```
 
-
+**Tips:**  After `node-red-contrib-pi4ioe5v` being installed,  **node-red should be restarted**, otherwise, the node cannot be found on the page.
 
 ## Usage
 
