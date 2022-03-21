@@ -9,9 +9,9 @@ module.exports = function(RED) {
         // config
         node.i2c_device_number = parseInt(config.i2c_device_number);
         node.i2c_address = parseInt(config.i2c_address, 16);
-		node.temp_unit = config.temperature_unit;
-		node.sensor = null;
-		
+        node.temp_unit = config.temperature_unit;
+        node.sensor = null;
+        
 
         //clear status icon if one is hanging about when you deploy the node
         status_clear({});
@@ -39,17 +39,14 @@ module.exports = function(RED) {
         node.on("input", function(msg) {
             //clear status icon every new trigger input
             node.status({});
-			
-			//send voltage_output_object to payload
-			// RED.util.setMessageProperty(msg, node.property, voltage_output_object);
-			if(node.temp_unit == 'fahrenheit') {
-				node.temp_unit = 1;
-			} else {
-				node.temp_unit = 0;
-			}
-			
-			msg.payload = node.sensor.get_temperature_humidity(node.temp_unit);
-			node.send(msg);
+            
+            let unit = 0;
+            if(node.temp_unit == 'fahrenheit') {
+                unit = 1;
+            }
+            
+            msg.payload = node.sensor.get_temperature_humidity(unit);
+            node.send(msg);
         });
 
         this.on('close', function() {

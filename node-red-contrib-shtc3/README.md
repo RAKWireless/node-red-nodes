@@ -27,7 +27,7 @@ cd ~/.node-red/node_modules/node-red-contrib-shtc3 && npm install
 
 To get value of  temperature and humidity you just need to select the correct settings for your device and trigger the node.
 
-<img src="assets/image-20220318194952263.png" alt="image-20220318194952263" style="zoom:80%;" />
+<img src="assets/image-20220321162437053.png" alt="image-20220321162437053" style="zoom:80%;" />	
 
 - **Name**
 
