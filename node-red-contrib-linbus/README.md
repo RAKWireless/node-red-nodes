@@ -14,7 +14,7 @@ first, you need download the source code of this module from our `node-red-nodes
 git clone -b dev https://git.rak-internal.net/product-rd/gateway/wis-developer/rak7391/node-red-nodes.git
 ```
 
-you should copy `node-red-contrib-linbus` folder to  `node_modules` folder,  which is in the root directory of your node-red install
+copy `node-red-contrib-linbus` folder to  `node_modules` folder, `node_modules`  folder is located in the root directory of your node-red install.
 
 ```
 cp -rf node-red-nodes/node-red-contrib-linbus ~/.node-red/node_modules
@@ -38,17 +38,17 @@ cd ~/.node-red/node_modules/node-red-contrib-linbus && npm install
 
 <img src="assets/linbus-parse-config.png" alt="linbus-parse-config" style="zoom: 67%;" />
 
-**ID:**Specify the identifier of linbus frame that you want to parse. values in the range 0 to 63 can be used.
+**ID:** Specify the identifier of linbus frame that you want to parse. values in the range 0 to 63 can be used. 
 
-**Length:**Specify the data length of linbus frame that you want to parse. data length should be 2 bytes or 4 bytes or 8 bytes
+**Length:** Specify the data length of linbus frame that you want to parse. data length should be 2 bytes or 4 bytes or 8 bytes
 
 ### linbus-builder
 
-linbus-builder` node that will create a valid linbus frame from a frame ID and a byte buffer payload, the output will be fed to a serial node. 
+`linbus-builder` node that will create a valid linbus frame from a frame ID and a byte buffer payload, the output will be fed to a serial node. 
 
 In this node you must config `ID`option, which specify the identifier of linbus frame that you want to builder. values in the range 0 to 63 can be used. 
 
-<img src="/assets/linbus-builder-config.png" alt="linbus-builder-config" style="zoom: 67%;" />
+<img src="assets/linbus-builder-config.png" alt="linbus-builder-config" style="zoom:67%;" />
 
 the payload is generated with an `inject` node, one thing to note is that the payload type must be set to `buffer` in the `inject` node and data length should be 2 bytes or 4 bytes or 8 bytes.
 
