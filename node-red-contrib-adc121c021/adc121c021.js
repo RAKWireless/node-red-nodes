@@ -12,7 +12,8 @@ const i2c = require('i2c-bus');
 // Address Pointer Register
 //const i2cAddress = 0x1;
 const i2cAddress = 0x51;
-const VOLTAGE_REF = 5;
+const VOLTAGE_REF = 5.0;
+
 const REG_CONVERSION_RESULT = 0x00;
 const REG_ALERT_STATUS = 0x01;
 const REG_CONFIGURATION = 0x02;
@@ -240,7 +241,7 @@ module.exports = class adc121c021 {
         let self = this;
         let data = Buffer.alloc(2);
         self.wire.readI2cBlockSync(this.i2cAddress, REG_CONVERSION_RESULT, 2, data);
-        var raw_adc = (data[0] & 15) * 256 + data[1];
+        var raw_adc = (data[0] & 0x0F) * 256 + data[1];
         return raw_adc;
     }
 
@@ -248,7 +249,7 @@ module.exports = class adc121c021 {
         let self = this;
         var raw_adc, voltage;
         raw_adc = this.read_adc_value();
-        voltage = raw_adc * VOLTAGE_REF / 4095;
+        voltage = raw_adc * VOLTAGE_REF / 4095.0;
         return voltage;
     }
 
