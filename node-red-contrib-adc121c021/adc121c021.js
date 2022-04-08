@@ -56,7 +56,7 @@ module.exports = class adc121c021 {
             device = 1;
         }
         if (!i2cAddress) {
-            this.i2cAddress = I2Ci2cAddress;
+            this.i2cAddress = I2C_ADDR;
         } else {
             this.i2cAddress = i2cAddress;
         }
