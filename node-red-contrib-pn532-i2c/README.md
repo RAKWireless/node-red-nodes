@@ -39,7 +39,7 @@ To get  UID of RFID card from PN532 you just need to select the correct settings
 
 - **i2c_Address**
 
-  The Address for shtc3 is 0x24 which can not be changed. 
+  The Address for pn532 is 0x24 which can not be changed. 
 
 
 
