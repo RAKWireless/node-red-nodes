@@ -16,7 +16,7 @@
   },
   "node-red": {
     "nodes": {
-      "shtc3_i2c": "pn532_node.js"
+      "pn532_i2c": "pn532_node.js"
     }
   },
   "scripts": {

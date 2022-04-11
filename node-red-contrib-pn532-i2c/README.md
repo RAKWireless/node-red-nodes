@@ -146,6 +146,6 @@ Import the json file to Node-RED then deploy the flow.
 
 After deploy, we can get owner of  RFID card when the card being put on antenna of  PN532. 
 
-## ![image-20220408160325558](assets/image-20220408160325558.png)
+![image-20220408160325558](assets/image-20220408160325558.png)
 
 This project is licensed under MIT license.
