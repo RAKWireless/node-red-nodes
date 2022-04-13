@@ -30,11 +30,11 @@ cd ~/.node-red/node_modules/node-red-contrib-adc121c021 && npm install
 
 ## Usage
 
-To get the voltage reading from the adc121c021, user only need to define the i2c bus of the chip. In this case, the adc121c021 is on bus 1, and the I2C address is configured to 0x51. 
+To get the voltage reading from the adc121c021, user only need to define the i2c bus of the chip. In this case, the adc121c021 is on bus 1, and the I2C address is configured to 0x51 (81 in decimal). 
 
 <img src="assets/adc121c021_i2c node.png" alt="adc121c021_i2c node configuration"/>
 
-The output of the node is a payload contains the raw ADC readings and the calculated voltage measurements,
+The output of the node is a payload contains the I2C address, the I2C device number (bus number), raw ADC readings, and the calculated voltage measurements,
 
 <img src="assets/node-output.png" alt="output of the adc121c021_i2c node configuration"/>
 
@@ -48,7 +48,7 @@ Default I2C Bus is 1.  `1` is for `'/dev/i2c-1'`.
 
 **i2c_Address**
 
-The Address by default is set to `0x51`. Please check adc121c021's datasheet for more information.
+The Address by default is set to `0x51`, this is the I2C address of RAK12004. Please check [adc121c021's datasheet](https://www.ti.com/lit/ds/symlink/adc121c021.pdf?ts=1649592829477&ref_url=https%253A%252F%252Fwww.google.com%252F) for more information. 
 
 
 
@@ -65,7 +65,7 @@ Once your installed the node in Node-RED, copy the content of the following .jso
     {
         "id": "4b119ae7baa52fd4",
         "type": "tab",
-        "label": "Flow 1",
+        "label": "adc121c021 example",
         "disabled": false,
         "info": "",
         "env": []
@@ -195,7 +195,7 @@ Once your installed the node in Node-RED, copy the content of the following .jso
         "type": "debug",
         "z": "4b119ae7baa52fd4",
         "name": "",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
