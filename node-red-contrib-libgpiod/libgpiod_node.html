@@ -1,0 +1,67 @@
+<script type="text/x-red" data-template-name="libgpiod">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-gpiochip_dev"><i class="fa fa-cog"></i> /dev/gpiochip?</label>
+        <input type="text" id="node-input-gpiochip_dev" style="width: 30%">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-gpio_port"><i class="fa fa-cog"></i> GPIO port</label>
+        <input type="text" id="node-input-gpio_port">
+    </div>
+	
+	<div class="form-row">
+        <label for="node-input-gpio_direction"><i class="fa fa-cog"></i> Direction</label>
+        <select type="text" id="node-input-gpio_direction">
+			<option value="1" selected>Output</option>
+			<option value="0">Input</option>
+		<select/>
+    </div>
+
+	<!-- <div class="form-row"> -->
+        <!-- <label for="node-input-gpio_value"><i class="fa fa-cog"></i> Value</label> -->
+        <!-- <input type="text" id="node-input-gpio_value"> -->
+    <!-- </div> -->
+	
+</script>
+
+<script type="text/x-red" data-help-name="libgpiod">
+    <p>A node-red node providing access to gpiochip to control its gpio with libgpiod library.</p>
+    <p><strong>Name:</strong><br/>
+    Define the msg name if you wish to change the name displayed on the node.</p>
+    <p><strong>/dev/gpiochip?</strong><br/>
+    The gpiochip Device # - You can execute 'sudo gpiodetect' to see which gpiochip you want to use.</p>
+    <p><strong>Port:</strong><br/>
+    The port of selected gpiochip must be number. </p>
+	<p><strong>Direction:</strong><br/>
+    The direction of port can be set as input or output mode. </p>
+	<!-- <p><strong>Value:</strong><br/> -->
+    <!-- The value of gpio port can be set as 1 or 0.</p> -->
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType("libgpiod", {
+        category: "rakwireless",
+        defaults: {
+            name: {value:""},
+            gpiochip_dev: {validate:RED.validators.number()},
+            gpio_port: {validate:RED.validators.number()},
+            gpio_direction: {value:1,validate:RED.validators.number()},
+            //gpio_value: {validate:RED.validators.number()}
+        },
+        color:"#FFCC66",
+        inputs: 1,
+        outputs: 1,
+        icon: "Raspberry Pi",
+        label: function() {
+            return this.name || "libgpiod";
+        },
+        labelStyle: function() {
+            return this.name ? "node_label_italic" : "";
+        }
+    });
+</script>
