@@ -23,9 +23,7 @@ module.exports = function(RED) {
 			} else {
 				node.port.requestInputMode();
 			}
-		} catch(e) {
-			console.log('11111111111111111');
-		}
+		} catch(e) {}
 
         //DO STUFF WHEN TRIGGERED
         node.on("input", function(msg) {

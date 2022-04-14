@@ -41,7 +41,7 @@ To set  GPIO port of `/dev/gpiochip?` you just need to select the correct settin
 
 - **/dev/gpiochip?**
 
-  The gpiochip Device # - You can execute 'sudo gpiodetect' to see gpiochip num.
+  The gpiochip Device # - You can execute `sudo gpiodetect` to see gpiochip num.
 
 - **GPIO port**
 
@@ -135,7 +135,7 @@ Import the json file to Node-RED then deploy the flow.
         "id": "9fd77fac1c624157",
         "type": "function",
         "z": "bced94699edbe2ef",
-        "name": "doggle_function",
+        "name": "toggle_function",
         "func": "var count = context.get('count') || 0;\nmsg.payload = 1 - count;\ncontext.set('count', msg.payload);\n\nreturn msg;\n",
         "outputs": 1,
         "noerr": 0,
@@ -153,8 +153,12 @@ Import the json file to Node-RED then deploy the flow.
 ]
 ```
 
-After deploy, we can find LED on board blinks. 
+After import, the flow will be shown as follow. 
 
-![image-20220413163942208](assets/image-20220413163942208.png)
+![image-20220414105810989](assets/image-20220414105810989.png)
+
+Configure `libgpio` node, and hit  **Deploy**  button.  Then, the `debug` node will print the state of gpio port at right side.
+
+## License
 
 This project is licensed under MIT license.
