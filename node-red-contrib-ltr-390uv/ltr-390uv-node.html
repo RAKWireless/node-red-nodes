@@ -1,0 +1,83 @@
+<script type="text/x-red" data-template-name="ltr-390uv">
+
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-i2c_device_number"><i class="fa fa-cog"></i> /dev/i2c-?</label>
+        <input type="text" id="node-input-i2c_device_number" style="width: 30%" placeholder="1">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-i2c_address"><i class="fa fa-cog"></i> i2c Address</label>
+        <input type="text" id="node-input-i2c_address" placeholder="0x53">
+    </div>
+    
+    <div class="form-row">
+        <label for="node-input-gain"><i class="fa fa-cog"></i> gain</label>
+        <select id="node-input-gain">
+            <option value=0>1x</option>
+            <option value=1 selected>3x</option>
+            <option value=2>6x</option>
+            <option value=3>9x</option>
+            <option value=4>18x</option>
+        </select>
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-resolution"><i class="fa fa-cog"></i> resolution</label>
+        <select id="node-input-resolution">
+            <option value=0>20 Bit</option>
+            <option value=1>19 Bit</option>
+            <option value=2>18 Bit</option>
+            <option value=3>17 Bit</option>
+            <option value=4 selected>16 Bit</option>
+            <option value=5>13 Bit</option>
+        </select>
+    </div> 
+</script>
+
+<script type="text/x-red" data-help-name="ltr-390uv">
+    <p>A node-red node providing ccess to the LTR-390UV, an I2C digital UV sensor.</p>
+    <p><strong>Name:</strong><br/>
+    Define the msg name if you wish to change the name displayed on the node.</p>
+    <p><strong>/dev/i2c-?</strong><br/>
+    The i2c Device # - Device number by default is set to 1. This is the number for most current raspberry pi's. i2c device numbers can range from 0 to 256.</p>
+    <p><strong>i2c Address:</strong><br/>
+    The Address by default is set to 0x53. 
+    <p><strong>gain:</strong><br/>
+    Define the als/uvs measuring gain range. the default value is 1x
+    <p><strong>resolution:</strong><br/>
+    Define the als/uvs measuring resolution, the default value is 16 Bit.
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType("ltr-390uv", {
+        category: "rakwireless",
+        defaults: {
+            name: {value:""},
+            i2c_device_number: {value:1,validate:RED.validators.number()},
+            i2c_address: {value:"0x53"},
+            gain: {value:1},
+            resolution: {value:4}
+        },
+        color:"#FFCC66",
+        inputs: 1,
+        outputs: 1,
+        icon: "Raspberry Pi",
+        label: function() {
+            return this.name || "ltr-390uv";
+        },
+        labelStyle: function() {
+            return this.name ? "node_label_italic" : "";
+        },
+        oneditprepare: function() {
+            this.i2c_device_number = !this.i2c_device_number ? 1 : this.i2c_device_number;  
+            this.i2c_address = !this.i2c_address ? "0x53" : this.i2c_address;
+        },
+        oneditsave: function () {
+        }
+    });
+</script>
