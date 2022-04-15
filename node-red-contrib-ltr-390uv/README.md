@@ -34,10 +34,6 @@ To get the lux and uvi reading from the ltr-390uv,  you need to select the corre
 
 <img src="assets/ltr-390uv-setting.png" alt="ltr-390uv-setting" style="zoom:67%;" />
 
-The output of the node is a payload contains the raw als data, raw uvs data,  the calculated lux and the calculated uvi
-
-<img src="assets/debug-node.png" alt="debug-node" style="zoom:67%;" />
-
 **Name**
 
 Define the msg name if you wish to change the name displayed on the node.
@@ -57,6 +53,12 @@ Define the als/uvs measuring gain range. the default value is `1x`
 **resolution**
 
 Define the als/uvs measuring resolution, the default value is `16 Bit`
+
+
+The output of the node is a payload contains the raw als data, raw uvs data,  the calculated lux and the calculated uvi
+
+<img src="assets/debug-node.png" alt="debug-node" style="zoom:67%;" />
+
 
 ## Example
 
