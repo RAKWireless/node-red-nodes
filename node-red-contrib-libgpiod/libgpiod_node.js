@@ -2,7 +2,8 @@
 // rakwireless.com
 
 module.exports = function(RED) {
-    const { version, Chip, Line } = require("node-libgpiod");
+    // const { version, Chip, Line } = require("node-libgpiod");
+	var exec = require('child_process').exec;
     function libgpiodMainFunction(config) {
         RED.nodes.createNode(this, config);
         // config
@@ -14,45 +15,37 @@ module.exports = function(RED) {
         //clear status icon if one is hanging about when you deploy the node
         node.status({});
 
-		node.chip = new Chip(node.gpiochip_dev);
-		node.port = new Line(node.chip, node.gpio_port);
-		
-		try {
-			if(node.gpio_direction == 1) {
-				node.port.requestOutputMode();
-			} else {
-				node.port.requestInputMode();
-			}
-		} catch(e) {}
-
         //DO STUFF WHEN TRIGGERED
         node.on("input", function(msg) {
 			//clear status icon every new trigger input
 			node.status({});
 			let val = parseInt(msg.payload);
-			let origin_val = node.port.getValue();
+			// let origin_val = node.port.getValue();
 			try {
-				if(node.gpio_direction == 1) {
-					if(origin_val != val) {
-						node.port.setValue(val);
-						origin_val = val;
+				exec('python ./libgpio.py '+ node.gpiochip_dev+' '+node.gpio_port+' '+node.gpio_direction+' '+val,
+				function(error,stdout,stderr){
+					if(error) {
+						msg.payload = stderr;
+						node.status({
+							fill: 'red',
+							shape: 'dot',
+							text: msg.payload
+						});
+						node.send(msg);
+					} else {
+						if(stdout.length > 1){
+							// msg.payload = JSON.parse(stdout.trim());
+							msg.payload = JSON.parse(stdout.trim().replace(/'/g, '"'));
+							node.send(msg);
+							node.status({
+								fill: 'green',
+								shape: 'dot',
+								text: msg.payload.value
+							});
+						}
 					}
-				}
-				
-				node.status({
-					fill: 'green',
-					shape: 'dot',
-					text: origin_val
 				});
 			} catch(e) {}
-			
-			node.send({'payload': {
-					'chip': 'gpiochip'+node.gpiochip_dev,
-					'gpio': node.gpio_port,
-					'direction': node.gpio_direction == 1 ? 'Output' : 'Input',
-					'value':origin_val
-				}
-			});
         });
 
         node.on('close', function() {

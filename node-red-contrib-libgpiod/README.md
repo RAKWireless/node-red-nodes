@@ -5,13 +5,25 @@ A node-red node providing access to gpiochip to set its gpio pin.
 
 ---
 
+## Prerequisite
+
+Install `python 3`  and `pip3` firstly. 
+
+```
+sudo apt install python3-dev
+```
+
+```
+sudo apt install python3-pip
+```
+
+Install python library - `gpiod` .
+
+```
+python3 -m pip install -U --user pip gpiod
+```
+
 ## Install
-
-Install `libgpiod` library with the following commands. 
-
-```
-sudo apt install libgpiod
-```
 
 Install `node-red-contrib-libgpiod` node with the following commands. If you use docker of Node-RED, you may need to replace `~/.node-red` with `/usr/src/node-red`.
 
