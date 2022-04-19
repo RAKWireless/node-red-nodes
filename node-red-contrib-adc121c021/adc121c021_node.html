@@ -39,7 +39,7 @@
 
 <script type="text/javascript">
     RED.nodes.registerType("adc121c021_i2c", {
-        category: "rakwireless",
+        category: "wisblock",
         defaults: {
             name: {value:""},
             i2c_device_number: {value:1,validate:RED.validators.number()},
@@ -48,7 +48,7 @@
         color:"#FFCC66",
         inputs: 1,
         outputs: 1,
-        icon: "Raspberry Pi",
+        icon: "./icons/white-logo-only.svg",
         label: function() {
             return this.name || "adc121c021_i2c";
         },
