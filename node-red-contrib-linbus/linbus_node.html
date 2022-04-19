@@ -23,7 +23,7 @@
 <script type="text/javascript">
 	RED.nodes.registerType('linbus-parse',{
         category: 'wisblock',
-        color:"#c6dbef",
+        color:"#FFCC66",
         defaults: {
             name: { value: ""},
             ID: { required:true},
@@ -67,15 +67,15 @@
 
 <script type="text/javascript">
 	RED.nodes.registerType('linbus-builder',{
-        category: 'rakwireless',
-        color:"#c6dbef",
+        category: 'wisblock',
+        color:"#FFCC66",
         defaults: {
             name: { value: ""},
             ID: {value:"", required:true},
         },
 		inputs:1,
         outputs:1,
-		icon: "rpi.png",
+		icon: "RAKwireless-logo.svg",
         label: function() {
             return this.name || "linbus-builder";
         },
