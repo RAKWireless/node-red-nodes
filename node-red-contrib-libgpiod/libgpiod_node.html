@@ -45,7 +45,7 @@
 
 <script type="text/javascript">
     RED.nodes.registerType("libgpiod", {
-        category: "rakwireless",
+        category: "wisblock",
         defaults: {
             name: {value:""},
             gpiochip_dev: {validate:RED.validators.number()},
@@ -56,7 +56,7 @@
         color:"#FFCC66",
         inputs: 1,
         outputs: 1,
-        icon: "Raspberry Pi",
+        icon: "RAKwireless-logo.svg",
         label: function() {
             return this.name || "libgpiod";
         },

@@ -131,7 +131,7 @@
 
 <script type="text/javascript">
     RED.nodes.registerType("ads7830_i2c", {
-        category: "rakwireless",
+        category: "wisblock",
         defaults: {
             name: {value:""},
             i2c_device_number: {value:1,validate:RED.validators.number()},
@@ -159,7 +159,7 @@
         color:"#FFCC66",
         inputs: 1,
         outputs: 1,
-        icon: "Raspberry Pi",
+        icon: "RAKwireless-logo.svg",
         label: function() {
             return this.name || "ads7830_i2c";
         },
