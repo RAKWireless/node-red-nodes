@@ -118,7 +118,7 @@
 <script type="text/javascript">
     RED.nodes.registerType('pi4ioe5v in',{
         category: 'wisblock',
-        color:"#c6dbef",
+        color:"#FFCC66",
         defaults: {
             name: { value: ""},
             bus:  {
@@ -276,8 +276,8 @@
 
 <script type="text/javascript">
     RED.nodes.registerType('pi4ioe5v out',{
-        category: 'rakwireless',
-        color:"#c6dbef",
+        category: 'wisblock',
+        color:"#FFCC66",
         defaults: {
             name: { value: ""},
             bus:  {
@@ -293,7 +293,7 @@
         inputs:1,
         outputs:0,
         align: "right",
-        icon: "rpi.png",
+        icon: "RAKwireless-logo.svg",
         label: function() {
             return this.name || "pi4ioe5v out";
         },
