@@ -1,0 +1,108 @@
+</style>
+
+<script type="text/x-red" data-template-name="opt3001">
+
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-i2c_device_number"><i class="fa fa-cog"></i> /dev/i2c-?</label>
+        <input type="text" id="node-input-i2c_device_number" style="width: 30%" placeholder="1">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-i2c_address"><i class="fa fa-cog"></i> i2c Address</label>
+        <select id="node-input-i2c_address">
+            <option value="0x44" selected>0x44</option>
+            <option value="0x45">0x45</option>
+            <option value="0x46">0x46</option>
+            <option value="0x47">0x47</option>
+        </select>
+    </div>  
+
+    <div class="form-row">
+        <label for="RANGE_NUMBER_FIELD"><i class="fa fa-cog"></i>Scale Mode</label>
+        <select id="RANGE_NUMBER_FIELD">
+            <option value="1100" selected>1100 Automatic full-scale mode</option>
+            <option value="1101">1101</option>
+            <option value="1110">1110</option>
+            <option value="1111">1111</option>
+        </select>
+    </div>
+
+    <div class="form-row">
+        <label for="CONVERSION_TIME_FIELD"><i class="fa fa-cog"></i>Conversion Time</label>
+        <select id="CONVERSION_TIME_FIELD">
+            <option value="1" selected>800ms</option>
+            <option value="0">100ms</option>
+        </select>
+    </div>
+
+    <div class="form-row">
+        <label for="MODE_OF_CONVERSION_OPERATION_FIELD"><i class="fa fa-cog"></i>Conversion Operation Mode</label>
+        <select id="MODE_OF_CONVERSION_OPERATION_FIELD">
+            <option value="10" selected>continouse conversions 0b10</option>
+            <option value="11">continouse conversions 0b11</option>
+            <option value="00">shutdown(chip default)</option>
+            <option value="01">single-shot</option>
+        </select>
+    </div>
+
+
+
+ 
+</script>
+
+<script type="text/x-red" data-help-name="opt3001">
+    <p>A node-red node providing access to a opt3001 I2C digital ambient light sensor.</p>
+    <p><strong>Name:</strong><br/>
+    Define the msg name if you wish to change the name displayed on the node.</p>
+    <p><strong>/dev/i2c-?</strong><br/>
+    The i2c Device # - Device number by default is set to 1. This is the number for most current raspberry pi's. i2c device numbers can range from 0 to 256.</p>
+    <p><strong>i2c Address:</strong><br/>
+    The Address by default is set to 0x44. Possible i2c address: 0x44, 0x45, 046, 0x47
+    <p><strong>Scale Mode:</strong><br/>
+    The Scale Mode selects the full-scale lux range of the device. The Scale Mode(RANGE NUMBER FIELD) is configured to 0b1100 by default, which is the code for automatic full-scale setting mode. This mode eliminates the need for a user to predict and
+    set the optimal range for the device. 
+    The device powers up as 0b1100 in automatic full-scale setting mode. Codes ob1101, 0b1110, and 0b1111 are reserved by the chip manufacturer for future use.
+    <p><strong>Conversion Time:</strong><br/>
+    The conversion time field determines the length of the light to digital conversion process. The choices are 100 ms and 800 ms. A longer integration time allows for a lower noise measurement.
+    <p><strong>Conversion Operation Mode:</strong><br/>
+    The mode of conversion operation field controls whether the device is operating in continuous conversion, single-shot, or low-power shutdown mode.
+    0b00 = Shutdown (chip default);
+    0b01 = Single-shot;
+    0b10 & 0b11 = Continuous conversions (node default)
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType("opt3001", {
+        category: "wisblock",
+        defaults: {
+            name: {value:""},
+            i2c_device_number: {value:1,validate:RED.validators.number()},
+            i2c_address: {value:"0x44"},
+            rangeNumber:{value:"1100"},
+            conversionTime:{value:"1"},
+            conversionMode:{value:"10"}
+        },
+        color:"#F19800",
+        inputs: 1,
+        outputs: 1,
+        icon: "RAKwireless-icon.svg",
+        label: "message_label_style",
+        label: function() {
+            return this.name || "opt3001";
+        },
+        
+        labelStyle: "message_label_style",
+
+        oneditprepare: function() {
+            this.i2c_device_number = !this.i2c_device_number ? 1 : this.i2c_device_number;  
+            this.i2c_address = !this.i2c_address ? "0x44" : this.i2c_address;
+        },
+        oneditsave: function () {
+        }
+    });
+</script>
