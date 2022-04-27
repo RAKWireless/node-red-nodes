@@ -75,7 +75,7 @@ Once your installed the node in Node-RED, copy the content of the following .jso
     {
         "id": "bced94699edbe2ef",
         "type": "tab",
-        "label": "rak1903-read",
+        "label": "opt3001-example",
         "disabled": false,
         "info": "This is an example flow that read from rak1903/opt3001 every 1 second.",
         "env": []
