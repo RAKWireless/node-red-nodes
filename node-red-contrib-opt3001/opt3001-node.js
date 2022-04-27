@@ -66,7 +66,7 @@ module.exports = function (RED) {
             try {
                 var lux_float_result = light.read_lux_float();
                 read_lux_float_object['Ambient light (lux)'] = lux_float_result.toFixed(3);
-                read_lux_float_object['i2c_address'] = (this.i2c_address).toString(16);
+                read_lux_float_object['i2c_address'] = "0x"+(this.i2c_address).toString(16);
                 read_lux_float_object['i2c_device_number'] = this.i2c_device_number;
                 read_lux_float_object['Range number field'] = this.rangeNumber;
                 read_lux_float_object['Conversion time field'] = this.conversionTime;

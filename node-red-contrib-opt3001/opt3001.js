@@ -12,7 +12,7 @@ const i2c = require('i2c-bus');
 
 //const i2cAddress = 0x1;
 const i2cAddress = 0x44;
-// possible i2c address: 0x44, 0x45, 046, 0x47
+// possible i2c address: 0x44, 0x45, 0x46, 0x47
 // Address Pointer Register
 const I2C_LS_REG_RESULT = 0x00;
 const I2C_LS_REG_CONFIG = 0x01;
@@ -100,7 +100,6 @@ module.exports = class OPT3001 {
     values = Buffer.alloc(2);
     self.wire.readI2cBlockSync(this.i2cAddress, adr, 2, values);
     data = values[0] << 8 | values[1];
-    console.log("read_register_16bit_data: ", data);
     return data;
   }
 
@@ -117,8 +116,6 @@ module.exports = class OPT3001 {
     d1 = data >> 8;
     d0 = data & 0xFF;
     var buffer_data = Buffer.from([d1, d0]);
-    //var buffer_data = new Buffer([d1, d0]);
-    console.log("write_register_16bit_buffer_data: ", buffer_data);
     return self.wire.writeI2cBlockSync(this.i2cAddress, adr, 2, buffer_data);
   }
 
@@ -146,11 +143,7 @@ module.exports = class OPT3001 {
 
   get_config_setup(){
     let config = RANGE_NUMBER_FIELD + CONVERSION_TIME_FIELD + MODE_OF_CONVERSION_OPERATION_FIELD + OVERFLOW_FLAG_FIELD + CONVERSION_READY_FIELD +FLAG_HIGH_FIELD+FLAG_LOW_FIELD+LATCH_FIELD+POLARITY_FIELD+MASK_EXPONENT_FIELD+FAULT_COUNT_FIELD;
-    // var converted_config = parseInt(config,2).toString(16);
-    // var converted_config = parseInt(("0x"+(parseInt(config,2).toString(16))),16);
     var converted_config = Number("0b"+ config)
-    console.log("configuration: ", converted_config);
-    // console.log(typeof converted_config);
     return converted_config;
   }
 
@@ -196,9 +189,6 @@ module.exports = class OPT3001 {
     req_value = this.read_register_16bit(I2C_LS_REG_RESULT);
     mantisse = req_value & 0xfff;
     exponent = (req_value & 0xf000) >> 12;
-    console.log("mantisse: ", mantisse);
-    console.log("exponent: ", exponent);
-
     // mantisse << exponent
     return Math.pow(2, exponent) * mantisse;
   }
@@ -215,8 +205,6 @@ module.exports = class OPT3001 {
     console.log("req_valuee: ", req_value);
     mantisse = req_value & 0xfff;
     exponent = (req_value & 0xf000) >> 12;
-    console.log("mantisse: ", mantisse);
-    console.log("exponent: ", exponent);
     // mantisse << exponent * 0.01
     return Math.pow(2, exponent) * mantisse * 0.01;
   }
