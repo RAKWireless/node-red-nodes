@@ -1,0 +1,81 @@
+{
+  "_from": "@pizzaprogram/mcp-pcf-aio",
+  "_id": "@pizzaprogram/mcp-pcf-aio@2.3.5-20220326",
+  "_inBundle": false,
+  "_integrity": "sha512-b525Td9nRaqqoXRyERLHEKs4Ri3wFnEz50NT2Z24rgSr/UGgA1Mu361VpNsp/PPHQAH+nmRDYusbenrK76ypBg==",
+  "_location": "/@pizzaprogram/mcp-pcf-aio",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "@pizzaprogram/mcp-pcf-aio",
+    "name": "@pizzaprogram/mcp-pcf-aio",
+    "escapedName": "@pizzaprogram%2fmcp-pcf-aio",
+    "scope": "@pizzaprogram",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/@pizzaprogram/mcp-pcf-aio/-/mcp-pcf-aio-2.3.5-20220326.tgz",
+  "_shasum": "73fc720312be68830f4116611dc63e5c84be5f46",
+  "_spec": "@pizzaprogram/mcp-pcf-aio",
+  "_where": "/home/rak/.node-red/node_modules",
+  "author": {
+    "name": "László Szakmári www.pizzaprogram.hu"
+  },
+  "bugs": {
+    "url": "https://github.com/pizzaprogram/mcp23017-pcf8574-aio/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "i2c-bus": "^5.2.2",
+	"node-libgpiod": "^0.3.0"
+  },
+  "deprecated": false,
+  "description": "Node-Red node for multiple MCP23017 chips (each 16 input or output) + PCF8574(A) (8 I/O). The I2C Bus number can be specified too.",
+  "engines": {
+    "node": ">=12",
+    "node-red": ">1"
+  },
+  "homepage": "https://github.com/pizzaprogram/mcp23017-pcf8574-aio#readme",
+  "keywords": [
+    "node-red",
+    "multiple",
+    "i2c",
+    "bus",
+    "io",
+    "input",
+    "output",
+    "aio",
+    "mcp23017",
+    "pcf8574",
+    "channel"
+  ],
+  "license": "MIT",
+  "name": "@pizzaprogram/mcp-pcf-aio",
+  "node-red": {
+    "version": ">1.0.0",
+    "nodes": {
+      "mcp-pcf-aio": "mcp-pcf-aio.js"
+    }
+  },
+  "old-scripts": {
+    "node-red": "node /usr/lib/node_modules/node-red/red.js",
+    "node-red2": "node --inspect ./usr/lib/node_modules/node-red/red.js",
+    "inspect": "node --inspect ./usr/lib/node_modules/node-red/red.js --userDir ./home/pi/.node-red/node_modules/mcp-pcf-aio",
+    "start": "node node_modules/node-red/red.js -v -u . -s settings.js",
+    "debug": "node --nolazy --inspect-brk=9229 node_modules/node-red/red.js -v -u . -s settings.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pizzaprogram/mcp23017-pcf8574-aio.git"
+  },
+  "scripts": {
+    "node-red": "node --inspect /usr/lib/node_modules/node-red/red.js"
+  },
+  "version": "2.3.5-20220326"
+}

@@ -1,0 +1,495 @@
+[
+    {
+        "id": "04823d5afca6d208",
+        "type": "tab",
+        "label": "MCP teszt",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "bf42d56f5125dbe7",
+        "type": "group",
+        "z": "04823d5afca6d208",
+        "name": "Input example",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "a471214a1b5b665d",
+            "2dcf38d41b5f5cef",
+            "0cc29b1b37c230cf",
+            "656f4899d34f3d6a",
+            "5dbb2b58c0819f2d",
+            "38737232e47550c8"
+        ],
+        "env": [],
+        "x": 14,
+        "y": 19,
+        "w": 672,
+        "h": 142
+    },
+    {
+        "id": "98fb45d14add6a77",
+        "type": "group",
+        "z": "04823d5afca6d208",
+        "name": "Simple Pin control - Out example",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "0deab26cb8ad80bf",
+            "48178452c277f49b",
+            "8d222958c456e9b3"
+        ],
+        "env": [],
+        "x": 34,
+        "y": 199,
+        "w": 512,
+        "h": 122
+    },
+    {
+        "id": "0baa5a7f5a235732",
+        "type": "group",
+        "z": "04823d5afca6d208",
+        "name": "Complett Pin control - Out example",
+        "style": {
+            "label": true
+        },
+        "nodes": [
+            "cdb554694af63c0b",
+            "83cfcef10524acd0",
+            "b29818dfe5fa6d8c",
+            "489cc4c35bb3839b",
+            "c97d62672d3eb61e",
+            "997bc22c57525541",
+            "437dc37a9faf8f09",
+            "3f16f6266c7148e1"
+        ],
+        "env": [],
+        "x": 34,
+        "y": 339,
+        "w": 482,
+        "h": 322
+    },
+    {
+        "id": "a471214a1b5b665d",
+        "type": "debug",
+        "z": "04823d5afca6d208",
+        "g": "bf42d56f5125dbe7",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 590,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "2dcf38d41b5f5cef",
+        "type": "debug",
+        "z": "04823d5afca6d208",
+        "g": "bf42d56f5125dbe7",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 590,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "cdb554694af63c0b",
+        "type": "inject",
+        "z": "04823d5afca6d208",
+        "g": "0baa5a7f5a235732",
+        "name": "True - gets inverted",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "x": 170,
+        "y": 380,
+        "wires": [
+            [
+                "c97d62672d3eb61e"
+            ]
+        ]
+    },
+    {
+        "id": "83cfcef10524acd0",
+        "type": "inject",
+        "z": "04823d5afca6d208",
+        "g": "0baa5a7f5a235732",
+        "name": "False - gets inverted",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "false",
+        "payloadType": "bool",
+        "x": 170,
+        "y": 420,
+        "wires": [
+            [
+                "c97d62672d3eb61e"
+            ]
+        ]
+    },
+    {
+        "id": "b29818dfe5fa6d8c",
+        "type": "inject",
+        "z": "04823d5afca6d208",
+        "g": "0baa5a7f5a235732",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "All0",
+        "payloadType": "str",
+        "x": 170,
+        "y": 580,
+        "wires": [
+            [
+                "c97d62672d3eb61e"
+            ]
+        ]
+    },
+    {
+        "id": "489cc4c35bb3839b",
+        "type": "inject",
+        "z": "04823d5afca6d208",
+        "g": "0baa5a7f5a235732",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "All1",
+        "payloadType": "str",
+        "x": 170,
+        "y": 620,
+        "wires": [
+            [
+                "c97d62672d3eb61e"
+            ]
+        ]
+    },
+    {
+        "id": "0deab26cb8ad80bf",
+        "type": "inject",
+        "z": "04823d5afca6d208",
+        "g": "98fb45d14add6a77",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "x": 130,
+        "y": 240,
+        "wires": [
+            [
+                "8d222958c456e9b3"
+            ]
+        ]
+    },
+    {
+        "id": "48178452c277f49b",
+        "type": "inject",
+        "z": "04823d5afca6d208",
+        "g": "98fb45d14add6a77",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "false",
+        "payloadType": "bool",
+        "x": 130,
+        "y": 280,
+        "wires": [
+            [
+                "8d222958c456e9b3"
+            ]
+        ]
+    },
+    {
+        "id": "0cc29b1b37c230cf",
+        "type": "inject",
+        "z": "04823d5afca6d208",
+        "g": "bf42d56f5125dbe7",
+        "name": "Interrupt trigger",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "true",
+        "payloadType": "bool",
+        "x": 240,
+        "y": 60,
+        "wires": [
+            [
+                "656f4899d34f3d6a"
+            ]
+        ]
+    },
+    {
+        "id": "656f4899d34f3d6a",
+        "type": "MCP PCF In",
+        "z": "04823d5afca6d208",
+        "g": "bf42d56f5125dbe7",
+        "name": "MCP Bit2",
+        "chip": "80a912a7d0794c6a",
+        "bitNum": "2",
+        "invert": false,
+        "pullUp": true,
+        "debounce": 0,
+        "onMsg": true,
+        "offMsg": true,
+        "x": 430,
+        "y": 60,
+        "wires": [
+            [
+                "a471214a1b5b665d"
+            ]
+        ]
+    },
+    {
+        "id": "c97d62672d3eb61e",
+        "type": "MCP PCF Out",
+        "z": "04823d5afca6d208",
+        "g": "0baa5a7f5a235732",
+        "name": "MCP-23-5",
+        "chip": "ad16f0140a10887d",
+        "bitNum": "1",
+        "invert": true,
+        "x": 420,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "8d222958c456e9b3",
+        "type": "MCP PCF Out",
+        "z": "04823d5afca6d208",
+        "g": "98fb45d14add6a77",
+        "name": "PCF8574 Out addr-21 Bit-0 no-invert",
+        "chip": "f918d0f4efa1c321",
+        "bitNum": "0",
+        "invert": false,
+        "x": 370,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "5dbb2b58c0819f2d",
+        "type": "MCP PCF In",
+        "z": "04823d5afca6d208",
+        "g": "bf42d56f5125dbe7",
+        "name": "MCP Bit0 inv.",
+        "chip": "80a912a7d0794c6a",
+        "bitNum": "0",
+        "invert": true,
+        "pullUp": true,
+        "debounce": 0,
+        "onMsg": true,
+        "offMsg": true,
+        "x": 440,
+        "y": 120,
+        "wires": [
+            [
+                "2dcf38d41b5f5cef"
+            ]
+        ]
+    },
+    {
+        "id": "997bc22c57525541",
+        "type": "inject",
+        "z": "04823d5afca6d208",
+        "g": "0baa5a7f5a235732",
+        "name": "Set-2-On",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "Pin",
+                "v": "2",
+                "vt": "num"
+            },
+            {
+                "p": "State",
+                "v": "true",
+                "vt": "bool"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "-1",
+        "payloadType": "str",
+        "x": 160,
+        "y": 480,
+        "wires": [
+            [
+                "c97d62672d3eb61e"
+            ]
+        ]
+    },
+    {
+        "id": "437dc37a9faf8f09",
+        "type": "inject",
+        "z": "04823d5afca6d208",
+        "g": "0baa5a7f5a235732",
+        "name": "Set-2-Off",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "Pin",
+                "v": "2",
+                "vt": "num"
+            },
+            {
+                "p": "State",
+                "v": "false",
+                "vt": "bool"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "-1",
+        "payloadType": "str",
+        "x": 160,
+        "y": 520,
+        "wires": [
+            [
+                "c97d62672d3eb61e"
+            ]
+        ]
+    },
+    {
+        "id": "38737232e47550c8",
+        "type": "comment",
+        "z": "04823d5afca6d208",
+        "g": "bf42d56f5125dbe7",
+        "name": "Change Bus + Addr! & Read me!",
+        "info": "This example is using:\n I2C Bus = 22\n Address = 0x27\n Input read interval = 100ms\n",
+        "x": 170,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "3f16f6266c7148e1",
+        "type": "comment",
+        "z": "04823d5afca6d208",
+        "g": "0baa5a7f5a235732",
+        "name": "",
+        "info": "",
+        "x": 410,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "80a912a7d0794c6a",
+        "type": "mcp_pcf_chip",
+        "busNum": "22",
+        "addr": "0x27",
+        "interval": "100",
+        "startAllHIGH": false
+    },
+    {
+        "id": "ad16f0140a10887d",
+        "type": "mcp_pcf_chip",
+        "busNum": "22",
+        "addr": "0x23",
+        "interval": "0",
+        "startAllHIGH": true
+    },
+    {
+        "id": "f918d0f4efa1c321",
+        "type": "mcp_pcf_chip",
+        "busNum": "22",
+        "addr": "0x42",
+        "interval": "0",
+        "startAllHIGH": true
+    }
+]
