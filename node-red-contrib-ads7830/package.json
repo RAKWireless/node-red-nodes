@@ -1,6 +1,6 @@
 {
   "name": "node-red-contrib-ads7830",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "A node-red node providing access to a ADS7830 I2C analog to digital converter",
   "author": "rakwireless.com",
   "license": "MIT",
@@ -17,7 +17,7 @@
   },
   "node-red": {
     "nodes": {
-      "ads7830_i2c": "ads7830_node.js"
+      "ads7830_i2c": "ads7830/ads7830_node.js"
     }
   },
   "scripts": {

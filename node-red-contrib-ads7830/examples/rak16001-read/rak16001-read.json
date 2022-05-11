@@ -1,0 +1,90 @@
+[
+    {
+        "id": "903fc29aeb6467f7",
+        "type": "tab",
+        "label": "rak16001-read",
+        "disabled": false,
+        "info": "The example is to read 8 channels data from ads7830 every 5 seconds with singleEnded mode.",
+        "env": []
+    },
+    {
+        "id": "db4e1e9fea0295f5",
+        "type": "ads7830_i2c",
+        "z": "903fc29aeb6467f7",
+        "name": "",
+        "i2c_device_number": 1,
+        "i2c_address": "0x4A",
+        "inputsForChannel": "singleEnded",
+        "singleEndedChannel0": true,
+        "singleEndedChannel1": true,
+        "singleEndedChannel2": true,
+        "singleEndedChannel3": true,
+        "singleEndedChannel4": true,
+        "singleEndedChannel5": true,
+        "singleEndedChannel6": true,
+        "singleEndedChannel7": true,
+        "differentialChannel0_1": false,
+        "differentialChannel2_3": false,
+        "differentialChannel4_5": false,
+        "differentialChannel6_7": false,
+        "differentialChannel1_0": false,
+        "differentialChannel3_2": false,
+        "differentialChannel5_4": false,
+        "differentialChannel7_6": false,
+        "internalReferenceOnOff": "0",
+        "ADConverterOnOff": "1",
+        "x": 450,
+        "y": 220,
+        "wires": [
+            [
+                "bbadd339d650ae1c"
+            ]
+        ]
+    },
+    {
+        "id": "ee3e49e648d66cd5",
+        "type": "inject",
+        "z": "903fc29aeb6467f7",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "5",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 230,
+        "y": 220,
+        "wires": [
+            [
+                "db4e1e9fea0295f5"
+            ]
+        ]
+    },
+    {
+        "id": "bbadd339d650ae1c",
+        "type": "debug",
+        "z": "903fc29aeb6467f7",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 670,
+        "y": 220,
+        "wires": []
+    }
+]
