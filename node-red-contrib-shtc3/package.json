@@ -15,7 +15,7 @@
   },
   "node-red": {
     "nodes": {
-      "shtc3_i2c": "./sample/shtc3_node.js"
+      "shtc3_i2c": "./shtc3/shtc3_node.js"
     }
   },
   "scripts": {

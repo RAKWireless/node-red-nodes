@@ -3,6 +3,8 @@ node-red-contrib-shtc3
 
 A node-red node providing access to a shtc3 temperature and humidity sensor.
 
+**Tips**: Please make sure that user has the permissions to access  i2c devices. 
+
 ---
 
 ## Install
@@ -25,34 +27,35 @@ cd ~/.node-red/node_modules/node-red-contrib-shtc3 && npm install
 
 ## Usage
 
-To get value of  temperature and humidity you just need to select the correct settings for your device and trigger the node.
+- **shtc3_i2c**
 
-<img src="assets/image-20220321162437053.png" alt="image-20220321162437053" style="zoom:80%;" />	
+​		To get value of  temperature and humidity you just need to select the correct settings for your device and trigger the node.
 
-- **Name**
+​		<img src="assets/image-20220321162437053.png" alt="image-20220321162437053" style="zoom:80%;" />	
 
-  Define the msg name if you wish to change the name displayed on the node.
+​		**Name**
 
-- **/dev/i2c-?**
+​			Define the msg name if you wish to change the name displayed on the node.
 
-  Default I2C Bus is 1.  `1` is for `'/dev/i2c-1'`.
+​		**/dev/i2c-?**
 
-- **i2c_Address**
+​			Default I2C Bus is 1.  `1` is for `/dev/i2c-1`.
 
-  The Address for shtc3 is `0x70` which can not be changed. 
+​		**i2c_Address**
 
-- **Temperature Unit**
+​			The Address for shtc3 is `0x70` which can not be changed. 
 
-  You can select `Celsius` or `Fahrenheit` as you like.
-  
-  
+​		**Temperature Unit**
+
+​			You can select `Celsius` or `Fahrenheit` as you like.
+
+
 
 The output of the node is a payload contains `temperature` and `humidity` data.
 
 ```
 {
 	temperature: "34.72 °C"
-
 	humidity: "17.92 %"
 }
 ```
@@ -61,17 +64,7 @@ The output of the node is a payload contains `temperature` and `humidity` data.
 
 ## Example
 
-Import the [shtc3-read.json](examples/shtc3-read.json) file to Node-RED then deploy the flow.
-
-After deploy, we can get data of temperature and humidity as follows. 
-
-![image-20220321103720194](assets/image-20220321103720194.png)
-
-
-
-## Tested hardware
-
-Shtc3 sensor on RAK7391
+- [shtc3-read](examples/shtc3-read/README.md) -  Read temperature and humidity data from shtc3 sensor.
 
 
 

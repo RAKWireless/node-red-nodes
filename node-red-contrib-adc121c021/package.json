@@ -16,7 +16,7 @@
   },
   "node-red": {
     "nodes": {
-      "adc121c021": "./sample/adc121c021_node.js"
+      "adc121c021": "./adc121c021/adc121c021_node.js"
     }
   },
   "scripts": {
