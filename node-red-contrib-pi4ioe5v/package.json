@@ -1,6 +1,6 @@
 {
   "name": "node-red-contrib-pi4ioe5v",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "PI4IOE5V96224 GPIO Expander node",
   "author": "rakwireless.com",
   "license": "MIT",
@@ -16,10 +16,7 @@
   },
   "node-red": {
     "nodes": {
-      "pi4ioe5v": "ioExpander.js"
+      "pi4ioe5v": "./pi4ioe5v/ioExpander.js"
     }
-  },
-  "scripts": {
-    "test": ""
   }
 }

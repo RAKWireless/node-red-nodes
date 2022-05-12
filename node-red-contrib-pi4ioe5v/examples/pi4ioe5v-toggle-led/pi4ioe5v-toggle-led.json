@@ -1,0 +1,86 @@
+[
+    {
+        "id": "d0f4ea7a6c4df086",
+        "type": "tab",
+        "label": "pi4ioe5v-toggle-led",
+        "disabled": false,
+        "info": "The example shows how to toggle the on-board LED in the RAK7391. LED on RAK7391 uses IO0_7 port of PI4IOE5V96224.",
+        "env": []
+    },
+    {
+        "id": "4ab926118dceef89",
+        "type": "inject",
+        "z": "d0f4ea7a6c4df086",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "5",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 190,
+        "y": 260,
+        "wires": [
+            [
+                "c9debbfd7f22adbb"
+            ]
+        ]
+    },
+    {
+        "id": "c9debbfd7f22adbb",
+        "type": "pi4ioe5v in",
+        "z": "d0f4ea7a6c4df086",
+        "name": "",
+        "bus": "1",
+        "address": "0x20",
+        "pin": "7",
+        "x": 390,
+        "y": 260,
+        "wires": [
+            [
+                "6c60ba89b4984426"
+            ]
+        ]
+    },
+    {
+        "id": "af19e4e92613bd7d",
+        "type": "pi4ioe5v out",
+        "z": "d0f4ea7a6c4df086",
+        "name": "",
+        "bus": "1",
+        "address": "0x20",
+        "pin": "7",
+        "x": 790,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "6c60ba89b4984426",
+        "type": "function",
+        "z": "d0f4ea7a6c4df086",
+        "name": "toggle_led",
+        "func": "let val = parseInt(msg.payload);\nif(val != 0 && val != 1) {\n    log.error('wrong value');\n} else {\n    msg.payload = 1 - msg.payload;\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 590,
+        "y": 260,
+        "wires": [
+            [
+                "af19e4e92613bd7d"
+            ]
+        ]
+    }
+]
