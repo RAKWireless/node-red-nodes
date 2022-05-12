@@ -20,8 +20,5 @@
     "nodes": {
       "opt3001": "./opt3001/opt3001-node.js"
     }
-  },
-  "scripts": {
-    "test": ""
   }
 }
