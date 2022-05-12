@@ -1,6 +1,6 @@
 {
   "name": "node-red-contrib-opt3001",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "A node-red node providing access to the opt3001, which is an I2C ambient light sensor",
   "author": "rakwireless.com",
   "license": "MIT",
@@ -18,7 +18,7 @@
   },
   "node-red": {
     "nodes": {
-      "opt3001": "opt3001-node.js"
+      "opt3001": "./opt3001/opt3001-node.js"
     }
   },
   "scripts": {
