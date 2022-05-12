@@ -55,90 +55,17 @@ Define the als/uvs measuring gain range. the default value is `1x`
 Define the als/uvs measuring resolution, the default value is `16 Bit`
 
 
-The output of the node is a payload contains the raw als data, raw uvs data,  the calculated lux and the calculated uvi
 
-<img src="assets/debug-node.png" alt="debug-node" style="zoom:67%;" />
+The output of the node is a payload contains the raw als data, raw uvs data,  the calculated lux and the calculated uvi.
+
+![image-20220512120228997](assets/image-debug-node.png)
 
 
-## Example
+## Examples
 
-This example outputs the measuring result with `debug` node every 2 seconds.
+- [rak12019-reading](examples/rak12019-reading/README.md) - Measure lux and uvi using WisBlock UV sensor RAK12019 from Node-RED.
 
-Once your installed the node in Node-RED, copy the content of the following .json file and paste it to the Clipboard in Node-RED, or you can download the .json file and import it. 
 
-```
-[
-    {
-        "id": "f6f2187d.f17ca8",
-        "type": "tab",
-        "label": "rak12019-reading",
-        "disabled": false,
-        "info": ""
-    },
-    {
-        "id": "c330ccc393fc83d4",
-        "type": "inject",
-        "z": "f6f2187d.f17ca8",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "2",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 130,
-        "y": 280,
-        "wires": [
-            [
-                "1acded7d9712deeb"
-            ]
-        ]
-    },
-    {
-        "id": "9e3562fd807a1f78",
-        "type": "debug",
-        "z": "f6f2187d.f17ca8",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 510,
-        "y": 280,
-        "wires": []
-    },
-    {
-        "id": "1acded7d9712deeb",
-        "type": "ltr-390uv",
-        "z": "f6f2187d.f17ca8",
-        "name": "",
-        "i2c_device_number": 1,
-        "i2c_address": "0x53",
-        "gain": "1",
-        "resolution": "4",
-        "x": 320,
-        "y": 280,
-        "wires": [
-            [
-                "9e3562fd807a1f78"
-            ]
-        ]
-    }
-]
-```
 
 ## License
 
