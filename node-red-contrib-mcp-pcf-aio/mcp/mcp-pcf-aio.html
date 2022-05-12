@@ -1,0 +1,246 @@
+
+<!-- CHIP SECTION -->
+
+<script type="text/javascript">
+	RED.nodes.registerType('mcp_pcf_chip', {
+		category: 'config',
+		defaults: {
+			busNum: { value: 1, required: true, validate: RED.validators.number() },
+			addr: { value: "0x20", required: true },
+			interval: { value: 100, required: true, validate: RED.validators.number() },
+			reset: {value: 16, required:true, validate: RED.validators.number()},
+			startAllHIGH: { value: false, required: true } // initialising the chip with all pins at HIGH state.
+		},
+		label: function () {
+			const _txt = "I2C-bus=" + this.busNum + " , Addr=";
+			const _ad  = parseInt(this.addr  , 16);
+			if (_ad >= 112 ) {return "FCP8574A: " + _txt + "0x" + (_ad/2).toString(16);} //"0x70"
+			else
+			if (_ad >=  64 ) {return "FCP8574: "  + _txt + "0x" + (_ad/2).toString(16);} //"0x40"
+			else
+							 {return "MCP23017: " + _txt + this.addr;}
+		},
+		align: 'center'
+	});
+</script>
+
+<script type="text/x-red" data-template-name="mcp_pcf_chip">
+	<div class="form-row">
+		<label for="node-config-input-busNum"><i class="icon-bookmark"></i> I2C Bus Number</label>
+		<input type="number" id="node-config-input-busNum" min=0 max=1024>
+	</div>
+	<div class="form-row">
+		<label for="node-config-input-addr"><i class="icon-bookmark"></i> Address A2-A1-A0</label>
+		<select type="text" id="node-config-input-addr">
+			<option value="0x20">0x20 MCP23017 0-0-0</option>
+			<option value="0x21">0x21 MCP23017 0-0-1</option>
+			<option value="0x22">0x22 MCP23017 0-1-0</option>
+			<option value="0x23">0x23 MCP23017 0-1-1</option>
+			<option value="0x24">0x24 MCP23017 1-0-0</option>
+			<option value="0x25">0x25 MCP23017 1-0-1</option>
+			<option value="0x26">0x26 MCP23017 1-1-0</option>
+			<option value="0x27">0x27 MCP23017 1-1-1</option>
+			<option value="0x40">0x20 PCF8574  0-0-0</option>
+			<option value="0x42">0x21 PCF8574  0-0-1</option>
+			<option value="0x44">0x22 PCF8574  0-1-0</option>
+			<option value="0x46">0x23 PCF8574  0-1-1</option>
+			<option value="0x48">0x24 PCF8574  1-0-0</option>
+			<option value="0x4A">0x25 PCF8574  1-0-1</option>
+			<option value="0x4C">0x26 PCF8574  1-1-0</option>
+			<option value="0x4E">0x27 PCF8574  1-1-1</option>
+			<option value="0x70">0x38 PCF8574A 0-0-0</option>
+			<option value="0x72">0x39 PCF8574A 0-0-1</option>
+			<option value="0x74">0x3A PCF8574A 0-1-0</option>
+			<option value="0x76">0x3B PCF8574A 0-1-1</option>
+			<option value="0x78">0x3C PCF8574A 1-0-0</option>
+			<option value="0x7A">0x3D PCF8574A 1-0-1</option>
+			<option value="0x7C">0x3E PCF8574A 1-1-0</option>
+			<option value="0x7E">0x3F PCF8574A 1-1-1</option>
+		</select>
+	</div>
+	<div class="form-row">
+		<label for="node-config-input-interval"><i class="icon-bookmark"></i>Read Interval in ms</label>
+		<input type="number" id="node-config-input-interval" min=0>
+	</div>
+	<div class="form-row">
+        <label for="node-config-input-reset"><i class="icon-bookmark"></i> Reset Pin</label>
+        <input type="number" id="node-config-input-reset" placeholder="Reset Pin Number">
+    </div>
+	<div class="form-row">
+		<label for="node-config-input-startAllHIGH"><i class="icon-bookmark"></i> Start All Outputs High</label>
+		<input type="checkbox" id="node-config-input-startAllHIGH" placeholder="Start All Outputs High">
+	</div>
+</script>
+
+
+<!-- INPUT SECTION -->
+
+<script type="text/javascript">
+	RED.nodes.registerType('MCP PCF In', {
+		category: "wisblock",
+		color:"#F19800",
+		defaults: {
+			name: { value: "" },
+			chip: { type: "mcp_pcf_chip", required: true },
+			bitNum: { required: true, validate: RED.validators.number() },
+			invert: { value: false },
+			pullUp: { value: true },
+			debounce: { value: 0, validate: RED.validators.number() },
+			onMsg: { value: true },
+			offMsg: { value: true }
+		},
+		inputs: 1,
+		outputs: 1,
+		inputLabels: "inject or interrupt read trigger",
+		outputLabels: ["msg of change"],
+		icon: "RAKwireless-icon.svg",
+		align: 'left',
+        label: function() {
+            return this.name || "shtc3_i2c";
+        },
+        labelStyle: function() {
+            return this.name ? "node_label_italic" : "";
+        }
+	});
+</script>
+
+<script type="text/x-red" data-template-name="MCP PCF In">
+	<div class="form-row">
+		<label for="node-input-name"><i class="icon-tag"></i> Name</label>
+		<input type="text" id="node-input-name" placeholder="Name">
+	</div>
+	<div class="form-row">
+		<label for="node-input-chip"><i class="fa fa-globe"></i> Chip</label>
+		<input type="text" id="node-input-chip">
+	</div>
+	<div class="form-row">
+		<label for="node-input-bitNum"><i class="icon-tag"></i> Bit Number (0-15)</label>
+		<input type="number" id="node-input-bitNum" placeholder="Bit Number" min=0 max=15>
+	</div>
+	<div class="form-row">
+		<label for="node-input-invert"><i class="icon-tag"></i> Invert (In+Out)</label>
+		<input type="checkbox" id="node-input-invert" placeholder="Invert">
+	</div>
+	<div class="form-row">
+		<label for="node-input-pullUp"><i class="icon-tag"></i> Pull Up (Input only)</label>
+		<input type="checkbox" id="node-input-pullUp" placeholder="Pull Up">
+	</div>
+	<div class="form-row">
+		<label for="node-input-debounce"><i class="icon-tag"></i> Debounce Time</label>
+		<input type="number" id="node-input-debounce" placeholder="Debounce Time" min=0>
+	</div>
+	<div class="form-row">
+		<label for="node-input-onMsg"><i class="icon-tag"></i> On Msg</label>
+		<input type="checkbox" id="node-input-onMsg" placeholder="On Msg">
+	</div>
+	<div class="form-row">
+		<label for="node-input-offMsg"><i class="icon-tag"></i> Off Msg</label>
+		<input type="checkbox" id="node-input-offMsg" placeholder="Off Msg">
+	</div>
+</script>
+
+<script type="text/x-red" data-help-name="MCP PCF In">
+	<p>MCP23017 chip has 16 pins (0-15), PCF8574(A) has 8 pins (0-7). Each pin (Bit) can be individually selected as in or out. </p>
+	<p>You can not use both chips at the same address (like 0x20) on the same bus, except PCF8574A, which has a higher address range.</p>
+	<p> The &quot;MCP-PCF-chip&quot; hidden global node manages the chip (all 8 or 16 i/o).  This node has the interval to keep reading the input buffer</p>
+	<p>To disable repeated reading set Read Interval to 0 at the config of the Chip.</p>
+
+	<h3>Interrupt + Forced readout</h3>
+	<p>This node turns on automatically BankA + BankB interrupt channels. (BankA = 0-7 on all chips + BankB = 8-15 on MCP chip)</p>
+	<p> Interrupt pin is turning HIGH state directly on the chip, if any of those 8 bits changed, and will reset after a read occured.</p>
+	<p> If you connect a direct wire from the chip to your main PC or an other input-chip, to send a signal, you can be notified of a change event, and do not have to re-re-read the state of the chip many times pro second.</p>
+	<p> Use the Input point of this node to trigger a full read of all Pins. The payload must be 1 or true to do that.</p>
+	<p>The resulting message will be an array with these values: <code>msg.payload, msg.immediateReadSuccess, msg.readingTimeLengthMs, msg.AllStatesRaw, msg.AllBinary</code></p>
+	<p>(This kind of immediate forced read is not always successfull, so make sure: <code>msg.immediateReadSuccess == true</code>, or repeat the readout.)</p>
+	<p> Because a full read takes ca 16ms on a 100MHz I2C bus, the read will be skipped if the last read was less than 20ms ago and the previous values will be pushed to the message.</p>
+
+	<h3>Pull-Up</h3>
+	<p> Each of the Bits (pins) can be individually turn on the chip's internal weak pull-up register (100 kOhm). </p>
+
+	<h3>State</h3>
+	<p> The On/Off Msg checkboxs are used to allow to send unique messages as payload on state change.  The status will change anyway regardless of the on/off msg </p>
+	<p> The debounce sets the time required for a state to be steady before changing the status and sending a message (To prevent too quick changes caused by sparks and disturbance.)</p>
+	<p> If the amount of time (reading of the chip's state) took longer than the repeat or bounce time, it will be auto-increased and logged. Minimum = 20ms.</p>
+
+	<h3>Invert</h3>
+	<p> This checkbox will force the node to work the opposite way. 0=On, 1=Off. It will effect the state Messages too.</p>
+	<p> Invert state is handled by this software. (The MCP23017 chip's internal invert state remains always Off=0.)</p>
+	<p> Each of the Bits (pins) can be set individually.</p>
+</script>
+
+
+
+<!-- OUTPUT SECTION -->
+
+<script type="text/javascript">
+	RED.nodes.registerType('MCP PCF Out', { //mcp_pcf_out
+		category: 'output',
+		color: '#f19800',
+		defaults: {
+			name: { value: "" },
+			chip: { type: "mcp_pcf_chip", required: true },
+			bitNum: { required: true },
+			invert: { value: false }
+		},
+		inputs: 1,
+		outputs: 0,
+		inputLabels: "turn on/off one bit or All0 All1",
+		outputLabels: ["msg of success"],
+		icon: "font-awesome/fa-ticket",
+		align: 'right',
+		label: function () {
+			if (this.name) 	{return this.name + "»" ;}
+			else 			{return "MCP23017 or PCF8574 Out " + bitNum + "»";}
+		}
+	});
+</script>
+
+
+<script type="text/x-red" data-template-name="MCP PCF Out">
+	<div class="form-row">
+		<label for="node-input-name"><i class="icon-tag"></i> Name</label>
+		<input type="text" id="node-input-name" placeholder="Name">
+	</div>
+	<div class="form-row">
+		<label for="node-input-chip"><i class="fa fa-globe"></i> Chip</label>
+		<input type="text" id="node-input-chip">
+	</div>
+	<div class="form-row">
+		<label for="node-input-bitNum"><i class="icon-tag"></i> Bit Number</label>
+		<input type="number" id="node-input-bitNum" placeholder="Bit Number" min=0 max=15>
+	</div>
+	<div class="form-row">
+		<label for="node-input-invert"><i class="icon-tag"></i> Invert</label>
+		<input type="checkbox" id="node-input-invert" placeholder="Invert">
+	</div>
+</script>
+
+<script type="text/x-red" data-help-name="MCP PCF Out">
+	<p>MCP23017 has 16 pins (0-15). Can be individually selected as in or out.</p>
+	<h3>The Chip</h3>
+	<p> There is a global (hidden) &quot;MCP-PCF-chip&quot; node you can set, with following attributes: </p>
+	<p> Start Output High: Initialising the chip at startup with 0xFF value (All ON). Recommended to use together with Output-Invert option</p>
+
+	<p> The message to the output requires a payload.  If the <code>msg.payload =true or =1</code> then it turns on</p>
+	<p> Topic (and any other parts) are ignored</p>
+	<p> Before each output command, the node reads the current value and sets only the changed bit.</p>
+	<p> </p>
+	<h3>Invert</h3>
+	<p> If Invert checkbox is checked at a specified node, it will force to send the opposite command to the chip, and will show the opposite state of the node. (0 = On). </p>
+	<p> The <code>ALL0</code> and <code>All1</code> payloads are setting a raw state directly, invert is not affecting those.
+	<p> </p>
+	<h3>Start All High</h3>
+	<p>  Some relay boards turn OFF if sending HIGH signal from the chip. To prevent accidentally turn ON all the realays on startup, use this checkbox.</p>
+	<p> Mostly it is used with Invert function combined.</p>
+	<h3>Errors</h3>
+	<p> If any error occure, red sign is shown with "!Error" text under the Node.</p>
+	<p> Possibile errors occure by: no such Bus (If bus can not opened) | no device at this Address | Pin occupied by other component</p>
+	<p> </p>
+
+	<h3>Change Log + More info:</h3>
+	<p> see Readme.md file.</p>
+</script>
+
+<!--
+
+ -->

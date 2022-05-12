@@ -1,0 +1,31 @@
+{
+  "license": "MIT",
+  "name": "mcp-pcf-aio",
+  "version": "1.0.0",
+  "description": "Node-Red node for multiple MCP23017 chips (each 16 input or output) + PCF8574(A) (8 I/O). The I2C Bus number can be specified too.",
+  "author": "rakwireless.com",
+  "license": "MIT",
+  "keywords": [
+    "node-red",
+    "multiple",
+    "i2c",
+    "bus",
+    "io",
+    "input",
+    "output",
+    "aio",
+    "mcp23017",
+    "pcf8574",
+    "channel"
+  ],
+  "dependencies": {
+    "i2c-bus": "^5.2.2",
+    "node-libgpiod": "^0.3.0"
+  },
+  "node-red": {
+    "version": ">1.0.0",
+    "nodes": {
+      "mcp-pcf-aio": "./mcp/mcp-pcf-aio.js"
+    }
+  }
+}
