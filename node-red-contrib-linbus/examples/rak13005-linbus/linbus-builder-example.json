@@ -1,0 +1,81 @@
+[
+    {
+        "id": "f6f2187d.f17ca8",
+        "type": "tab",
+        "label": "rak13005-linbus-builder-example",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "04fdb23d6f4f9336",
+        "type": "linbus-builder",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "ID": "1",
+        "x": 330,
+        "y": 300,
+        "wires": [
+            [
+                "d2b2dbda8ca9f9ac"
+            ]
+        ]
+    },
+    {
+        "id": "d2b2dbda8ca9f9ac",
+        "type": "serial out",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "serial": "8d95e25c93124592",
+        "x": 550,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "23ddcb1bc1c99bf6",
+        "type": "inject",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "[0,1,2,3,255,5,6,100]",
+        "payloadType": "bin",
+        "x": 150,
+        "y": 300,
+        "wires": [
+            [
+                "04fdb23d6f4f9336"
+            ]
+        ]
+    },
+    {
+        "id": "8d95e25c93124592",
+        "type": "serial-port",
+        "serialport": "/dev/ttyUSB0",
+        "serialbaud": "9600",
+        "databits": "8",
+        "parity": "none",
+        "stopbits": "1",
+        "waitfor": "",
+        "dtr": "none",
+        "rts": "none",
+        "cts": "none",
+        "dsr": "none",
+        "newline": "500",
+        "bin": "bin",
+        "out": "time",
+        "addchar": "",
+        "responsetimeout": "10000"
+    }
+]

@@ -18,8 +18,5 @@
     "nodes": {
       "adc121c021": "./adc121c021/adc121c021_node.js"
     }
-  },
-  "scripts": {
-    "test": ""
   }
 }

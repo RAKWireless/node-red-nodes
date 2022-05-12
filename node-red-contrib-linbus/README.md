@@ -32,17 +32,22 @@ cd ~/.node-red/node_modules/node-red-contrib-linbus && npm install
 
 `node-red-contrib-linbus` has two nodes,  `linbus-parse` node and `linbus-builder` node.  they  need to be used in combination with a serial port node, you must install `node-red-node-serialport` module first
 
-### linbus-parse
+- ### linbus-parse
 
 `linbus-parse` node that will receive data from a serial node and output a message upon valid linbus message reception (including frame ID, length and raw data a a byte buffer). in this node you must config `ID` and `Length` options.
 
 <img src="assets/linbus-parse-config.png" alt="linbus-parse-config" style="zoom: 67%;" />
 
-**ID:** Specify the identifier of linbus frame that you want to parse. values in the range 0 to 63 can be used. 
+​		**ID:**
 
-**Length:** Specify the data length of linbus frame that you want to parse. data length should be 2 bytes or 4 bytes or 8 bytes
+​			Specify the identifier of linbus frame that you want to parse. values in the range 0 to 63 can be used. 
 
-### linbus-builder
+​		**Length:**
+
+​			Specify the data length of linbus frame that you want to parse. data length should be 2 bytes or 4 bytes or 8 bytes
+
+- ### linbus-builder
+
 
 `linbus-builder` node that will create a valid linbus frame from a frame ID and a byte buffer payload, the output will be fed to a serial node. 
 
@@ -53,6 +58,12 @@ In this node you must config `ID`option, which specify the identifier of linbus 
 the payload is generated with an `inject` node, one thing to note is that the payload type must be set to `buffer` in the `inject` node and data length should be 2 bytes or 4 bytes or 8 bytes.
 
 <img src="assets/inject.png" alt="inject" style="zoom:67%;" />
+
+
+
+## Examples
+
+[rak13005-linbus](examples/rak13005-linbus/README.md) - LinBUS communication using WisBlock LIN MODULE RAK13005 on RAK7391.
 
 
 
