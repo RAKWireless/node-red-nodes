@@ -28,7 +28,7 @@ const I2C_LS_REG_DEVICEID = 0x7F;
 var RANGE_NUMBER_FIELD = "1100";
 // Bit 11 Conversion time field
 // 0b = 100 ms, 1b = 800ms
-var CONVERSION_TIME_FIELD = "1"; 
+var CONVERSION_TIME_FIELD = "1";
 // Bit 10..9 Mode of conversion: Shutdown
 // 00b = shutdown(default), 01b = single-shot; 10b,11b=continouse conversions
 var MODE_OF_CONVERSION_OPERATION_FIELD = "10";
@@ -36,7 +36,7 @@ var MODE_OF_CONVERSION_OPERATION_FIELD = "10";
 var OVERFLOW_FLAG_FIELD = "0";
 // Bit 7 Conversion ready field
 var CONVERSION_READY_FIELD = "0";
-// Bit 6 Flag high field 
+// Bit 6 Flag high field
 var FLAG_HIGH_FIELD = "0";
 // Bit 5 Flag low filed
 var FLAG_LOW_FIELD = "0";
@@ -202,7 +202,6 @@ module.exports = class OPT3001 {
     */
     var exponent, mantisse, req_value;
     req_value = this.read_register_16bit(I2C_LS_REG_RESULT);
-    console.log("req_valuee: ", req_value);
     mantisse = req_value & 0xfff;
     exponent = (req_value & 0xf000) >> 12;
     // mantisse << exponent * 0.01

@@ -40,7 +40,7 @@ While the `node-red-contrib-ltr-390uv` hasn't been published, so you need to ins
 git clone -b dev https://git.rak-internal.net/product-rd/gateway/wis-developer/rak7391/node-red-nodes.git
 ```
 
-then copy `node-red-contrib-ltr-390uv directory  to  the `node_modules` directory,
+then copy `node-red-contrib-ltr-390uv directory  to  the `node_modules directory,
 
 ```
 cp -rf node-red-nodes/node-red-contrib-ltr-390uv ~/.node-red/node_modules

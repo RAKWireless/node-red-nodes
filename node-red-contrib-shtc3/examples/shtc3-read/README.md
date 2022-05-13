@@ -32,7 +32,21 @@ There are two ways to use shtc3  sensor in this example:
 
 ### 2.2. Software
 
-Please install `node-red-contrib-shtc3` node before. 
+Please install `node-red-contrib-shtc3` node with the following commands. If you use docker of Node-RED, you may need to replace `~/.node-red` with `/usr/src/node-red`.
+
+```
+git clone -b dev https://git.rak-internal.net/product-rd/gateway/wis-developer/rak7391/node-red-nodes.git
+```
+
+```
+cp -rf node-red-nodes/node-red-contrib-shtc3 ~/.node-red/node_modules
+```
+
+```
+cd ~/.node-red/node_modules/node-red-contrib-shtc3 && npm install
+```
+
+
 
 ## 3. Run example
 
