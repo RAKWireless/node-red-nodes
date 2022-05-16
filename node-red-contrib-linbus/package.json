@@ -12,7 +12,7 @@
   "license": "MIT",
   "node-red": {
     "nodes": {
-      "linbus": "linbus_node.js"
+      "linbus": "./linbus/linbus_node.js"
     }
   }
 }
