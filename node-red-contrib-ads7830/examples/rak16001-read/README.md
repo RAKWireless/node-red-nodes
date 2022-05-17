@@ -28,7 +28,7 @@ Then we connect rak16001 with a DC power supply as follows. A0 of rak16001 conne
 
 ### 2.2. Software
 
-Please install `node-red-contrib-pi4ioe5v` node with the following commands. If you use docker of Node-RED, you may need to replace `~/.node-red` with `/usr/src/node-red`.
+Please install `node-red-contrib-ads7830` node with the following commands. If you use docker of Node-RED, you may need to replace `~/.node-red` with `/usr/src/node-red`.
 
 ```
 git clone -b dev https://git.rak-internal.net/product-rd/gateway/wis-developer/rak7391/node-red-nodes.git
@@ -41,6 +41,8 @@ cp -rf node-red-nodes/node-red-contrib-ads7830 ~/.node-red/node_modules
 ```
 cd ~/.node-red/node_modules/node-red-contrib-ads7830 && npm install
 ```
+
+**Tips:**  After `node-red-contrib-ads7830`  installed,  **node-red should be restarted**, otherwise, the node cannot be found on the page.
 
 ## 3. Run example
 
