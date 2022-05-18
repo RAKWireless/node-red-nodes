@@ -1,5 +1,5 @@
 {
-  "name": "node-red-contrib-ltr-390uv",
+  "name": "@rakwireless/ltr-390uv",
   "version": "1.0.0",
   "description": "A node-red node providing access to the LTR-390UV, which is an I2C digital UV sensor",
   "author": "rakwireless.com",

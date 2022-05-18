@@ -1,5 +1,5 @@
 {
-  "name": "node-red-contrib-adc121c021",
+  "name": "@rakwireless/adc121c021",
   "version": "1.0.0",
   "description": "A node-red node providing access to the adc121c021 I2C analog to digital converter",
   "author": "rakwireless.com",

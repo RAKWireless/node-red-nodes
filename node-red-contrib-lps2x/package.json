@@ -1,5 +1,5 @@
 {
-  "name": "node-red-contrib-lps2x",
+  "name": "@rakwireless/lps2x",
   "version": "1.0.0",
   "description": "A node-red node providing access to lps22hb or lps25 I2C barometer sensor",
   "author": "rakwireless.com",

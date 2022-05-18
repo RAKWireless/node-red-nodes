@@ -1,5 +1,5 @@
 {
-  "name": "node-red-contrib-pi4ioe5v",
+  "name": "@rakwireless/pi4ioe5v",
   "version": "1.0.0",
   "description": "PI4IOE5V96224 GPIO Expander node",
   "author": "rakwireless.com",

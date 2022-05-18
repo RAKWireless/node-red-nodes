@@ -1,5 +1,5 @@
 {
-  "name": "node-red-contrib-shtc3",
+  "name": "@rakwireless/shtc3",
   "version": "1.0.0",
   "description": "A node-red node providing access to SHTC3 I2C temperature and humidity sensor",
   "author": "rakwireless.com",

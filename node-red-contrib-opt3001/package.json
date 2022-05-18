@@ -1,5 +1,5 @@
 {
-  "name": "node-red-contrib-opt3001",
+  "name": "@rakwireless/opt3001",
   "version": "1.0.0",
   "description": "A node-red node providing access to the opt3001, which is an I2C ambient light sensor",
   "author": "rakwireless.com",

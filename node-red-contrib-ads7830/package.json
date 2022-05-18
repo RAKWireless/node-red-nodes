@@ -1,5 +1,5 @@
 {
-  "name": "node-red-contrib-ads7830",
+  "name": "@rakwireless/ads7830",
   "version": "1.0.0",
   "description": "A node-red node providing access to a ADS7830 I2C analog to digital converter",
   "author": "rakwireless.com",

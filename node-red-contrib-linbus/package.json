@@ -1,5 +1,5 @@
 {
-  "name": "node-red-contrib-linbus",
+  "name": "@rakwireless/linbus",
   "version": "1.0.0",
   "description": "LinBUS module able to parse and create LinBUS-compatible frames to be forwarded using a serial connection",
   "keywords": [

@@ -1,5 +1,5 @@
 {
-  "name": "node-red-contrib-pn532",
+  "name": "@rakwireless/pn532",
   "version": "1.0.0",
   "description": "A node-red node providing access to PN532 to read UID of RFID card.",
   "author": "rakwireless.com",

@@ -1,6 +1,5 @@
 {
-  "license": "MIT",
-  "name": "mcp-pcf-aio",
+  "name": "@rakwireless/mcp-pcf-aio",
   "version": "1.0.0",
   "description": "Node-Red node for multiple MCP23017 chips (each 16 input or output) + PCF8574(A) (8 I/O). The I2C Bus number can be specified too.",
   "author": "rakwireless.com",
