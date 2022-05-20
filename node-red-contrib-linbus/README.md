@@ -11,7 +11,7 @@ Please follow the steps below to install the  `node-red-contrib-linbus` module.
 first, you need download the source code of this module from our `node-red-nodes` repository
 
 ```
-git clone -b dev https://git.rak-internal.net/product-rd/gateway/wis-developer/rak7391/node-red-nodes.git
+git clone https://git.rak-internal.net/product-rd/gateway/wis-developer/rak7391/node-red-nodes.git
 ```
 
 copy `node-red-contrib-linbus` folder to  `node_modules` folder, `node_modules`  folder is located in the root directory of your node-red install.

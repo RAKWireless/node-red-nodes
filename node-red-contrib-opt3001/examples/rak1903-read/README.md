@@ -25,7 +25,7 @@ The easiest way to set up the hardware is to use the RAK6421 WisBlock Hat that e
 While the `node-red-contrib-opt3001` hasn't been published, so you need to install it in anther way. Please install `node-red-contrib-opt3001` node with the following commands. If you use docker of Node-RED, you may need to replace `~/.node-red` with `/usr/src/node-red`,
 
 ```
-git clone -b dev https://git.rak-internal.net/product-rd/gateway/wis-developer/rak7391/node-red-nodes.git
+git clone https://git.rak-internal.net/product-rd/gateway/wis-developer/rak7391/node-red-nodes.git
 ```
 
 then copy `node-red-contrib-opt3001` directory  to  the `node_modules` directory,

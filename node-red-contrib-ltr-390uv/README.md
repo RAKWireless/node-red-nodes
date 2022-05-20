@@ -11,7 +11,7 @@ A node providing access to ltr-390uv, measuring and calculating lux and uvi(ultr
 Please install `node-red-contrib-ltr-390uv` node with the following commands. If you use docker of Node-RED, you may need to replace `~/.node-red` with `/usr/src/node-red`,
 
 ```
-git clone -b dev https://git.rak-internal.net/product-rd/gateway/wis-developer/rak7391/node-red-nodes.git
+git clone https://git.rak-internal.net/product-rd/gateway/wis-developer/rak7391/node-red-nodes.git
 ```
 
 then copy `node-red-contrib-ltr-390uv` directory  to  the `node_modules` directory,
