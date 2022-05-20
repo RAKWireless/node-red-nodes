@@ -1,11 +1,12 @@
 {
   "name": "@rakwireless/linbus",
   "version": "1.0.0",
-  "description": "LinBUS module able to parse and create LinBUS-compatible frames to be forwarded using a serial connection",
+  "description": "LinBUS module able to parse and create LinBUS-compatible frames to be forwarded using a serial connection, created for RAK13005 LIN transceiver module, which uses the TLE7259-3 chip from Infineon",
   "keywords": [
     "node-red",
     "LinBUS",
     "linbus",
+    "TLE7259-3",
     "rakwireless"
   ],
   "author": "rakwireless.com",

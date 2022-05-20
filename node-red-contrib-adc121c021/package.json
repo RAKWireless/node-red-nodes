@@ -8,7 +8,7 @@
     "node-red",
     "adc121c021",
     "adc",
-    "analog to to digital converter",
+    "analog to digital converter",
     "rakwireless"
   ],
   "dependencies": {
