@@ -1,0 +1,65 @@
+<script type="text/x-red" data-template-name="adc121c021_i2c">
+
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-i2c_device_number"><i class="fa fa-cog"></i> /dev/i2c-?</label>
+        <input type="text" id="node-input-i2c_device_number" style="width: 30%" placeholder="1">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-i2c_address"><i class="fa fa-cog"></i> i2c Address</label>
+        <select id="node-input-i2c_address">
+            <option value="0x50">0x50</option>
+            <option value="0x51" selected>0x51</option>
+            <option value="0x52">0x52</option>
+            <option value="0x54">0x54</option>
+            <option value="0x55">0x55</option>
+            <option value="0x56">0x56</option>
+            <option value="0x58">0x58</option>
+            <option value="0x59">0x59</option>
+            <option value="0x5A">0x5A</option>
+        </select>
+    </div>  
+ 
+</script>
+
+<script type="text/x-red" data-help-name="adc121c021_i2c">
+    <p>A node-red node providing access to a ADC121c021 I2C analog to digital converter.</p>
+    <p><strong>Name:</strong><br/>
+    Define the msg name if you wish to change the name displayed on the node.</p>
+    <p><strong>/dev/i2c-?</strong><br/>
+    The i2c Device # - Device number by default is set to 1. This is the number for most current raspberry pi's. i2c device numbers can range from 0 to 256.</p>
+    <p><strong>i2c Address:</strong><br/>
+    The Address by default is set to 0x51. 
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType("adc121c021_i2c", {
+        category: "wisblock",
+        defaults: {
+            name: {value:""},
+            i2c_device_number: {value:1,validate:RED.validators.number()},
+            i2c_address: {value:"0x51"},
+        },
+        color:"#F19800",
+        inputs: 1,
+        outputs: 1,
+        icon: "RAKwireless-icon.svg",
+        label: function() {
+            return this.name || "adc121c021_i2c";
+        },
+        labelStyle: function() {
+            return this.name ? "node_label_italic" : "";
+        },
+        oneditprepare: function() {
+            this.i2c_device_number = !this.i2c_device_number ? 1 : this.i2c_device_number;  
+            this.i2c_address = !this.i2c_address ? "0x51" : this.i2c_address;
+        },
+        oneditsave: function () {
+        }
+    });
+</script>

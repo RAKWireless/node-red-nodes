@@ -1,0 +1,171 @@
+[
+    {
+        "id": "5998627dfb7a1a7e",
+        "type": "tab",
+        "label": "rak12004-reading",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "a0484a9974f22830",
+        "type": "inject",
+        "z": "5998627dfb7a1a7e",
+        "name": "every 5s",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "5",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 170,
+        "y": 320,
+        "wires": [
+            [
+                "3758053f475062d3"
+            ]
+        ]
+    },
+    {
+        "id": "6d10939e5a37d791",
+        "type": "inject",
+        "z": "5998627dfb7a1a7e",
+        "name": "ON",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "1",
+        "payloadType": "num",
+        "x": 170,
+        "y": 160,
+        "wires": [
+            [
+                "117db7a88321b76d"
+            ]
+        ]
+    },
+    {
+        "id": "117db7a88321b76d",
+        "type": "pi-gpiod out",
+        "z": "5998627dfb7a1a7e",
+        "name": "",
+        "host": "pigpiod",
+        "port": 8888,
+        "pin": "12",
+        "set": "",
+        "level": "0",
+        "out": "out",
+        "sermin": "1000",
+        "sermax": "2000",
+        "freq": "800",
+        "x": 400,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "434049f8885af1db",
+        "type": "inject",
+        "z": "5998627dfb7a1a7e",
+        "name": "OFF",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "0",
+        "payloadType": "num",
+        "x": 170,
+        "y": 240,
+        "wires": [
+            [
+                "117db7a88321b76d"
+            ]
+        ]
+    },
+    {
+        "id": "d6516e89d0361eca",
+        "type": "comment",
+        "z": "5998627dfb7a1a7e",
+        "name": "Notes",
+        "info": "The ADC121c021 module has an EN pin (IO_6 in the WisBlock connector) that must be pulled high before the reading. In the example flow, the EN pin is connected to pin 32 (GPIO 12) of the 40-pin header.\n\nTo enable/disable the EN pin, you need to use a pi-gpiod node to control it.  \n\nOnce the EN pin is set to ON, you should be able to read the PPM value and percentage readings from the MQ2 gas sensor.\n\nTo get a more accurate readins, you need to calibrate the MQ2 sensor based on your set-up. For more information about the gas sensor, please check the [datasheet](https://www.mouser.com/datasheet/2/321/605-00008-MQ-2-Datasheet-370464.pdf) and the [tutorial ](https://jayconsystems.com/blog/understanding-a-gas-sensor) ",
+        "x": 150,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "b04a338b6b5fa09a",
+        "type": "function",
+        "z": "5998627dfb7a1a7e",
+        "name": "MQ2",
+        "func": "// Retrieve voltage readings from the adc node\nvar sensorVoltage = msg.payload.Volts;\nconst MQ2_RL = 10;\n// RS over R0 = 9.8 ppm\nconst RatioMQ2CleanAir = 9.6;\nconst VOLTAGE_REF = 5;\nconst constantA = -0.399;\nconst constantB = 1.45;\n\n\nfunction readSensor(regressionMethod) {\n    // set the regression method if=1 use Exponential else Linear\n    //     Exponential:  PPM =  A*(RS/R0)^B\n    //     Linear:       PPM =  pow(10, (log10(RS/R0)-B)/A) \n\n    var RS_air = (VOLTAGE_REF * MQ2_RL / sensorVoltage) - MQ2_RL;\n    // console.log(\"DEBUG RS_air VALUE\", RS_air);\n    var ppm;\n    if (RS_air < 0) {\n        //No negative values accepted.\n        RS_air = 0;\n    }\n    // Get ratio RS_gas/RS_air\n    var ratio = RS_air / R0;\n    if (ratio <= 0) {\n        //No negative values accepted or upper datasheet recomendation. \n        ratio = 0;\n    }\n\n    if (regressionMethod == 1) {\n        ppm = constantA * Math.pow(ratio, constantB);\n    } else if (regressionMethod == 0){\n        //Get ppm value in linear scale according to the the ratio value \n        let ppm_log = (Math.log10(ratio) - constantB) / constantA;\n        //Convert ppm value to log scale \n        ppm = Math.pow(10, ppm_log);\n    } else{throw \"Wrong regression method, only support 1 and 0 \";}\n\n    if (ppm < 0) {\n        ppm = 0;\n    }\n    return ppm;\n}\n\nfunction calibrateR0(ratioInCleanAir) {\n    //Calculate RS in fresh air\n    var RS_air = (VOLTAGE_REF * MQ2_RL / sensorVoltage) - MQ2_RL;\n    //No negative values accepted\n    if (RS_air < 0) {\n        RS_air = 0;\n    }\n    //Calculate R0 \n    R0 = RS_air / ratioInCleanAir;\n    //No negative values accepted\n    if (R0 < 0) {\n        R0 = 0;\n    }0\n    return R0;\n}\n\n\n\n// Retrieve calibated R0 value\nvar R0 = flow.get('R0');\nif (!R0)\n{\n    var clacR0 = 0;\n    for (let i = 0; i <= 100; i++) {\n        clacR0 =clacR0+calibrateR0(RatioMQ2CleanAir);\n    }\n    R0=clacR0/100;\n\n    if (R0 === Infinity) {\n        throw \"Warning: Conection issue founded, R0 is infite (Open circuit detected) please check your wiring and supply\";\n    }\n    if (R0 == 0){\n        throw \"Warning: Conection issue founded, R0 is zero (Analog pin with short circuit to ground) please check your wiring and supply\";\n    }\n\n    //set the value of R0 for the flow\n    flow.set(\"R0\",R0);\n}\n\n// get sensor PPM value\nvar sensorPPM = readSensor(0);\nvar payload = {};\n\npayload.PPM_value = sensorPPM.toFixed (3);\npayload.PPM_percentage = ((sensorPPM / 10000) * 100).toFixed(3) +'%';\npayload.R0=R0.toFixed(3);\n\nreturn {\n    payload: payload\n};\n\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 550,
+        "y": 320,
+        "wires": [
+            [
+                "8f3671a5bd61c3ae"
+            ]
+        ]
+    },
+    {
+        "id": "8f3671a5bd61c3ae",
+        "type": "debug",
+        "z": "5998627dfb7a1a7e",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 730,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "3758053f475062d3",
+        "type": "adc121c021_i2c",
+        "z": "5998627dfb7a1a7e",
+        "name": "",
+        "i2c_device_number": 1,
+        "i2c_address": "0x51",
+        "x": 360,
+        "y": 320,
+        "wires": [
+            [
+                "b04a338b6b5fa09a"
+            ]
+        ]
+    }
+]

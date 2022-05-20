@@ -1,0 +1,64 @@
+<script type="text/x-red" data-template-name="lps2x_i2c">
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-i2c_device_number"><i class="fa fa-cog"></i> /dev/i2c-?</label>
+        <input type="text" id="node-input-i2c_device_number" style="width: 30%" placeholder="1">
+    </div>
+    <div class="form-row">
+        <label for="node-input-chip"><i class="fa fa-cog"></i> Chip</label>
+		<select id="node-input-chip">
+			<option value="0" selected>LPS22HB</option>
+			<option value="1">LPS25HB</option>
+		</select>
+    </div>
+    <div class="form-row">
+        <label for="node-input-i2c_address"><i class="fa fa-cog"></i> i2c Address</label>
+		<select id="node-input-i2c_address">
+			<option value="0x5C" selected>0x5C</option>
+			<option value="0x5D">0x5D</option>
+		</select>
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="lps2x_i2c">
+    <p>A node-red node providing access to lps22hb or lps25 I2C barometer sensor.</p>
+    <p><strong>Name:</strong><br/>
+    Define the msg name if you wish to change the name displayed on the node.</p>
+    <p><strong>/dev/i2c-?</strong><br/>
+    The i2c Device # - Device number by default is set to 1. This is the number for most current raspberry pi's. i2c device numbers can range from 0 to 256.</p>
+    <p><strong>Chip:</strong><br/>
+    LPS22HB or LPS25HB.</p>
+	<p><strong>i2c Address:</strong><br/>
+    The Address of LPS22HB/LPS25HB is 0x5C or 0x5D. </p>
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType("lps2x_i2c", {
+        category: "wisblock",
+        defaults: {
+            name: {value:""},
+            i2c_device_number: {value:1, validate:RED.validators.number()},
+            chip: {value:"0"},
+            i2c_address: {value:"0x5C"}
+        },
+        color:"#F19800",
+        inputs: 1,
+        outputs: 1,
+        icon: "RAKwireless-icon.svg",
+        label: function() {
+            return this.name || "lps2x_i2c";
+        },
+        labelStyle: function() {
+            return this.name ? "node_label_italic" : "";
+        },
+        oneditprepare: function() {
+            this.i2c_device_number = !this.i2c_device_number ? 1 : this.i2c_device_number;
+        },
+        oneditsave: function () {
+        }
+    });
+</script>

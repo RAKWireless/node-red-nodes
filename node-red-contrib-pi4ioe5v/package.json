@@ -1,0 +1,22 @@
+{
+  "name": "@rakwireless/pi4ioe5v",
+  "version": "1.0.0",
+  "description": "PI4IOE5V96224 GPIO Expander node",
+  "author": "rakwireless.com",
+  "license": "MIT",
+  "keywords": [
+    "node-red",
+    "Pi",
+    "GPIO Expander",
+    "Pi4ioe5v96224",
+	"rakwireless"
+  ],
+  "dependencies": {
+    "i2c-bus": "^5.2.0"
+  },
+  "node-red": {
+    "nodes": {
+      "pi4ioe5v": "./pi4ioe5v/ioExpander.js"
+    }
+  }
+}

@@ -1,0 +1,340 @@
+<script type="text/html" data-template-name="pi4ioe5v in">
+    <style>
+        .pinTable {
+            width: 300px;
+            display: inline-table;
+            font-size: 13px;
+            min-height: 200px;
+            max-height: 380px;
+        }
+        .pinTableBody {
+            width: 300px;
+            display: table-row-group;
+            line-height: 18px;
+        }
+        .pinTableRow {
+            width: 300;
+            display: table-row;
+            height: 14px;
+        }
+        .pinTableCellL {
+            width: 150px;
+            display: table-cell;
+            text-align: right;
+            padding-right: 4px;
+            vertical-align: top;
+            border: 1px solid #444;
+        }
+        .pinTableCellR {
+            width: 150px;
+            display: table-cell;
+            text-align: left;
+            padding-left: 4px;
+            vertical-align: top;
+            border: 1px solid #000;
+        }
+        .pinColorPower {
+            background-color:#FECBCE;
+        }
+        .pinColorGround {
+            background-color:#DDDDDD;
+        }
+        .pinColorGPIO {
+            background-color:#BFEBBF;
+        }
+        .pinColorDual {
+            background-color:#D0E6F4;
+        }
+        .pinColorSD {
+            background-color:#FFFDD0;
+        }
+    </style>
+
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="">
+    </div>
+    <div class="form-row">
+        <label for="node-input-bus"><i class="fa fa-map-bus"></i> Bus</label>
+        <select type="text" id="node-input-bus">
+            <option value="1" selected="selected">1</option>
+            <option value="0">0</option>
+        </select>
+    </div>
+    <div class="form-row">
+        <label for="node-input-address"><i class="fa fa-exchange"></i> Address</label>
+        <input type="text" id="node-input-address" placeholder="0x20">
+    </div>
+    <div class="form-row">
+        <label><i class="fa fa-circle"></i><span> IO</span></label>
+        <input type="text" id="node-input-pin" style="display:none;">
+        <div class="pinTable">
+            <div class="pinTableBody">
+                <div class="pinTableRow">
+                    <div class="pinTableCellR pinColorDual"><input type="radio" name="pins" value="0" style="width:auto;"> IO0_0 </div>
+                    <div class="pinTableCellR pinColorDual"><input type="radio" name="pins" value="8" style="width:auto;"> IO1_0 </div>
+                    <div class="pinTableCellR pinColorDual"><input type="radio" name="pins" value="16" style="width:auto;"> IO2_0 </div>
+                </div>
+                <div class="pinTableRow">
+                    <div class="pinTableCellR pinColorDual"><input type="radio" name="pins" value="1" style="width:auto;"> IO0_1 </div>
+                    <div class="pinTableCellR pinColorDual"><input type="radio" name="pins" value="9" style="width:auto;"> IO1_1 </div>
+                    <div class="pinTableCellR pinColorDual"><input type="radio" name="pins" value="17" style="width:auto;"> IO2_1 </div>
+                </div>
+                <div class="pinTableRow">
+                    <div class="pinTableCellR pinColorDual"><input type="radio" name="pins" value="2" style="width:auto;"> IO0_2 </div>
+                    <div class="pinTableCellR pinColorDual"><input type="radio" name="pins" value="10" style="width:auto;"> IO1_2 </div>
+                    <div class="pinTableCellR pinColorDual"><input type="radio" name="pins" value="18" style="width:auto;"> IO2_2 </div>
+                </div>
+                <div class="pinTableRow">
+                    <div class="pinTableCellR pinColorDual"><input type="radio" name="pins" value="3" style="width:auto;"> IO0_3 </div>
+                    <div class="pinTableCellR pinColorDual"><input type="radio" name="pins" value="11" style="width:auto;"> IO1_3 </div>
+                    <div class="pinTableCellR pinColorDual"><input type="radio" name="pins" value="19" style="width:auto;"> IO2_3 </div>
+                </div>
+                <div class="pinTableRow">
+                    <div class="pinTableCellR pinColorDual"><input type="radio" name="pins" value="4" style="width:auto;"> IO0_4 </div>
+                    <div class="pinTableCellR pinColorDual"><input type="radio" name="pins" value="12" style="width:auto;"> IO1_4 </div>
+                    <div class="pinTableCellR pinColorDual"><input type="radio" name="pins" value="20" style="width:auto;"> IO2_4 </div>
+                </div>
+                <div class="pinTableRow">
+                    <div class="pinTableCellR pinColorDual"><input type="radio" name="pins" value="5" style="width:auto;"> IO0_5 </div>
+                    <div class="pinTableCellR pinColorDual"><input type="radio" name="pins" value="13" style="width:auto;"> IO1_5 </div>
+                    <div class="pinTableCellR pinColorDual"><input type="radio" name="pins" value="21" style="width:auto;"> IO2_5 </div>
+                </div>
+                <div class="pinTableRow">
+                    <div class="pinTableCellR pinColorDual"><input type="radio" name="pins" value="6" style="width:auto;"> IO0_6 </div>
+                    <div class="pinTableCellR pinColorDual"><input type="radio" name="pins" value="14" style="width:auto;"> IO1_6 </div>
+                    <div class="pinTableCellR pinColorDual"><input type="radio" name="pins" value="22" style="width:auto;"> IO2_6 </div>
+                </div>
+                <div class="pinTableRow">
+                    <div class="pinTableCellR pinColorDual"><input type="radio" name="pins" value="7" style="width:auto;"> IO0_7 </div>
+                    <div class="pinTableCellR pinColorDual"><input type="radio" name="pins" value="15" style="width:auto;"> IO1_7 </div>
+                    <div class="pinTableCellR pinColorDual"><input type="radio" name="pins" value="23" style="width:auto;"> IO2_7 </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('pi4ioe5v in',{
+        category: 'wisblock',
+        color:"#F19800",
+        defaults: {
+            name: { value: ""},
+            bus:  {
+                value: '1',
+                required: true
+            },
+            address:  {
+                value: '0x20',
+                required: true
+            },
+            pin: { value:"", required:true, validate:RED.validators.number() }
+        },
+        inputs:1,
+        outputs:1,
+        icon: "RAKwireless-icon.svg",
+        label: function() {
+            return this.name || "pi4ioe5v in";
+        },
+        labelStyle: function() {
+            return this.name?"node_label_italic":"";
+        },
+        outputLabels: function() { return "IO"+this.pin; },
+        paletteLabel: "pi4ioe5v in",
+        oneditprepare: function() {
+            $('.pinTableBody input').on('change', function() {
+                this.pin = $(".pinTableBody input[type='radio']:checked").val();
+                $("#node-input-pin").val(this.pin);
+            });
+            $("#node-input-pin").change(function () {
+                if ($("#node-input-pin").val()) {
+                    $(".pinTableBody input[value="+$("#node-input-pin").val()+"]").prop('checked', true);
+                }
+            });
+        }
+    });
+</script>
+
+<script type="text/html" data-template-name="pi4ioe5v out">
+    <style>
+        .pinTable {
+            width: 300px;
+            display: inline-table;
+            font-size: 13px;
+            min-height: 200px;
+            max-height: 380px;
+        }
+        .pinTableBody {
+            width: 300px;
+            display: table-row-group;
+            line-height: 18px;
+        }
+        .pinTableRow {
+            width: 300;
+            display: table-row;
+            height: 14px;
+        }
+        .pinTableCellL {
+            width: 150px;
+            display: table-cell;
+            text-align: right;
+            padding-right: 4px;
+            vertical-align: top;
+            border: 1px solid #444;
+        }
+        .pinTableCellR {
+            width: 150px;
+            display: table-cell;
+            text-align: left;
+            padding-left: 4px;
+            vertical-align: top;
+            border: 1px solid #000;
+        }
+        .pinColorPower {
+            background-color:#FECBCE;
+        }
+        .pinColorGround {
+            background-color:#DDDDDD;
+        }
+        .pinColorGPIO {
+            background-color:#BFEBBF;
+        }
+        .pinColorDual {
+            background-color:#D0E6F4;
+        }
+        .pinColorSD {
+            background-color:#FFFDD0;
+        }
+    </style>
+
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="">
+    </div>
+    <div class="form-row">
+        <label for="node-input-bus"><i class="fa fa-map-bus"></i> Bus</label>
+        <select type="text" id="node-input-bus">
+            <option value="1" selected="selected">1</option>
+            <option value="0">0</option>
+        </select>
+    </div>
+    <div class="form-row">
+        <label for="node-input-address"><i class="fa fa-exchange"></i> Address</label>
+        <input type="text" id="node-input-address" placeholder="0x20">
+    </div>
+    <div class="form-row">
+        <label><i class="fa fa-circle"></i><span> IO</span></label>
+        <input type="text" id="node-input-pin" style="display:none;">
+        <div class="pinTable">
+            <div class="pinTableBody">
+                <div class="pinTableRow">
+                    <div class="pinTableCellR pinColorDual"><input type="radio" name="pins" value="0" style="width:auto;"> IO0_0 </div>
+                    <div class="pinTableCellR pinColorDual"><input type="radio" name="pins" value="8" style="width:auto;"> IO1_0 </div>
+                    <div class="pinTableCellR pinColorDual"><input type="radio" name="pins" value="16" style="width:auto;"> IO2_0 </div>
+                </div>
+                <div class="pinTableRow">
+                    <div class="pinTableCellR pinColorDual"><input type="radio" name="pins" value="1" style="width:auto;"> IO0_1 </div>
+                    <div class="pinTableCellR pinColorDual"><input type="radio" name="pins" value="9" style="width:auto;"> IO1_1 </div>
+                    <div class="pinTableCellR pinColorDual"><input type="radio" name="pins" value="17" style="width:auto;"> IO2_1 </div>
+                </div>
+                <div class="pinTableRow">
+                    <div class="pinTableCellR pinColorDual"><input type="radio" name="pins" value="2" style="width:auto;"> IO0_2 </div>
+                    <div class="pinTableCellR pinColorDual"><input type="radio" name="pins" value="10" style="width:auto;"> IO1_2 </div>
+                    <div class="pinTableCellR pinColorDual"><input type="radio" name="pins" value="18" style="width:auto;"> IO2_2 </div>
+                </div>
+                <div class="pinTableRow">
+                    <div class="pinTableCellR pinColorDual"><input type="radio" name="pins" value="3" style="width:auto;"> IO0_3 </div>
+                    <div class="pinTableCellR pinColorDual"><input type="radio" name="pins" value="11" style="width:auto;"> IO1_3 </div>
+                    <div class="pinTableCellR pinColorDual"><input type="radio" name="pins" value="19" style="width:auto;"> IO2_3 </div>
+                </div>
+                <div class="pinTableRow">
+                    <div class="pinTableCellR pinColorDual"><input type="radio" name="pins" value="4" style="width:auto;"> IO0_4 </div>
+                    <div class="pinTableCellR pinColorDual"><input type="radio" name="pins" value="12" style="width:auto;"> IO1_4 </div>
+                    <div class="pinTableCellR pinColorDual"><input type="radio" name="pins" value="20" style="width:auto;"> IO2_4 </div>
+                </div>
+                <div class="pinTableRow">
+                    <div class="pinTableCellR pinColorDual"><input type="radio" name="pins" value="5" style="width:auto;"> IO0_5 </div>
+                    <div class="pinTableCellR pinColorDual"><input type="radio" name="pins" value="13" style="width:auto;"> IO1_5 </div>
+                    <div class="pinTableCellR pinColorDual"><input type="radio" name="pins" value="21" style="width:auto;"> IO2_5 </div>
+                </div>
+                <div class="pinTableRow">
+                    <div class="pinTableCellR pinColorDual"><input type="radio" name="pins" value="6" style="width:auto;"> IO0_6 </div>
+                    <div class="pinTableCellR pinColorDual"><input type="radio" name="pins" value="14" style="width:auto;"> IO1_6 </div>
+                    <div class="pinTableCellR pinColorDual"><input type="radio" name="pins" value="22" style="width:auto;"> IO2_6 </div>
+                </div>
+                <div class="pinTableRow">
+                    <div class="pinTableCellR pinColorDual"><input type="radio" name="pins" value="7" style="width:auto;"> IO0_7 </div>
+                    <div class="pinTableCellR pinColorDual"><input type="radio" name="pins" value="15" style="width:auto;"> IO1_7 </div>
+                    <div class="pinTableCellR pinColorDual"><input type="radio" name="pins" value="23" style="width:auto;"> IO2_7 </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>
+
+
+<script type="text/javascript">
+    RED.nodes.registerType('pi4ioe5v out',{
+        category: 'wisblock',
+        color:"#F19800",
+        defaults: {
+            name: { value: ""},
+            bus:  {
+                value: '1',
+                required: true
+            },
+            address:  {
+                value: '0x20',
+                required: true
+            },
+            pin: { value:"", required:true, validate:RED.validators.number() }
+        },
+        inputs:1,
+        outputs:0,
+        align: "right",
+        icon: "RAKwireless-icon.svg",
+        label: function() {
+            return this.name || "pi4ioe5v out";
+        },
+        labelStyle: function() {
+            return this.name?"node_label_italic":"";
+        },
+        outputLabels: function() { return "IO"+this.pin; },
+        paletteLabel: "pi4ioe5v out",
+        oneditprepare: function() {
+            var pinnow = this.pin;
+            var pintip = this._("pi4ioe5v.tip.pin");
+            var pinname = this._("pi4ioe5v.pinname");
+            $('.pinTableBody input').on('change', function() {
+                this.pin = $(".pinTableBody input[type='radio']:checked").val();
+                $("#node-input-pin").val(this.pin);
+            });
+            $("#node-input-pin").change(function () {
+                if ($("#node-input-pin").val()) {
+                    $(".pinTableBody input[value="+$("#node-input-pin").val()+"]").prop('checked', true);
+                }
+            });
+        }
+    });
+</script>
+
+<script type="text/html" data-help-name="pi4ioe5v in">
+    <p>PI4IOE5VXXX IO expander input node. Generates a <code>msg.payload</code> with either a
+    0 or 1 depending on the state of the input pin.</p>
+    <h3>Outputs</h3>
+    <dl class="message-properties">
+        <dt>payload <span class="property-type">number</span></dt>
+        <dd>the payload will be a 1 or a 0.</dd>
+        <dt>topic <span class="property-type">string</span></dt>
+        <dd>the topic will be set to <code>{node.name}/{node.bus}/{node.address}</code>.</dd>
+    </dl>
+</script>
+
+<script type="text/html" data-help-name="pi4ioe5v out">
+    <p>PI4IOE5VXXX IO expander output node.</p>
+    <h3>Inputs</h3>
+    <dl class="message-properties">
+        <dt>payload <span class="property-type">number with either a 0 or 1</span></dt>
+    </dl>
+</script>

@@ -1,0 +1,95 @@
+<script type="text/html" data-template-name="linbus-parse">
+	<div class="form-row">
+		<label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+		<input type="text" id="node-input-name" placeholder="">
+	</div>
+
+    <div class="form-row">
+        <label for="node-input-ID"><i class="fa fa-random"></i> ID</label>
+        <input type="text" id="node-input-ID" placeholder="">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-length"><i class="fa fa-cog"></i> Length</label>
+        <select id="node-input-length">
+          <option value=2>2 byte</option>
+          <option value=4>4 byte</option>
+          <option value=8>8 byte</option>
+        </select>
+    </div>
+
+</script>
+
+<script type="text/javascript">
+	RED.nodes.registerType('linbus-parse',{
+        category: 'wisblock',
+        color:"#F19800",
+        defaults: {
+            name: { value: ""},
+            ID: { required:true},
+            length: { value:8, required:true}
+        },
+		inputs:1,
+        outputs:1,
+		icon: "RAKwireless-icon.svg",
+        label: function() {
+            return this.name || "linbus-parse";
+        },
+		labelStyle: function() {
+            return this.name?"node_label_italic":"";
+        },
+        paletteLabel: "linbus-parse"
+    });
+</script>
+
+<script type="text/x-red" data-help-name="linbus-parse">
+    <p>linbus-parse node that will receive data from a serial node and output a message upon valid LinBUS message reception</p>
+    <p><strong>Name:</strong><br/>
+    Define the msg name if you wish to change the name displayed on the node.</p>
+    <p><strong>ID:</strong><br/>
+    Specify the identifier of linbus frame that you want to parse. values in the range 0 to 63 can be used.</p>
+    <p><strong>Length:</strong><br/>
+    Specify the data length of linbus frame that you want to parse. data length should be 2 bytes or 4 bytes or 8 bytes</p>
+</script>
+
+<script type="text/html" data-template-name="linbus-builder">
+	<div class="form-row">
+		<label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+		<input type="text" id="node-input-name" placeholder="">
+	</div>
+
+    <div class="form-row">
+        <label for="node-input-ID"><i class="fa fa-random"></i> ID</label>
+        <input type="text" id="node-input-ID" placeholder="">
+    </div>
+
+</script>
+
+<script type="text/javascript">
+	RED.nodes.registerType('linbus-builder',{
+        category: 'wisblock',
+        color:"#F19800",
+        defaults: {
+            name: { value: ""},
+            ID: {value:"", required:true},
+        },
+		inputs:1,
+        outputs:1,
+		icon: "RAKwireless-icon.svg",
+        label: function() {
+            return this.name || "linbus-builder";
+        },
+		labelStyle: function() {
+            return this.name?"node_label_italic":"";
+        },
+        paletteLabel: "linbus-builder"
+    });
+</script>
+
+<script type="text/x-red" data-help-name="linbus-builder">
+    <p>linbus-builder node that will create a valid LinBUS frame from a frame type and a byte buffer payload, the output will be fed to a serial node.</p>
+    <p><strong>Name:</strong><br/>
+    Define the msg name if you wish to change the name displayed on the node.</p>
+    <p><strong>ID:</strong><br/>
+    Specify the identifier of linbus frame that you want to builder. values in the range 0 to 63 can be used.</p>
+</script>

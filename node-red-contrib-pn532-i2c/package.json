@@ -1,0 +1,22 @@
+{
+  "name": "@rakwireless/pn532",
+  "version": "1.0.0",
+  "description": "A node-red node providing access to PN532 to read UID of RFID card.",
+  "author": "rakwireless.com",
+  "license": "MIT",
+  "keywords": [
+    "node-red",
+    "pn532",
+    "i2c",
+    "NFC",
+    "rakwireless"
+  ],
+  "dependencies": {
+    "i2c-bus": "^5.2"
+  },
+  "node-red": {
+    "nodes": {
+      "pn532_i2c": "./pn532/pn532_node.js"
+    }
+  }
+}

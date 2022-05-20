@@ -1,0 +1,21 @@
+{
+  "name": "@rakwireless/shtc3",
+  "version": "1.0.0",
+  "description": "A node-red node providing access to SHTC3 I2C temperature and humidity sensor",
+  "author": "rakwireless.com",
+  "license": "MIT",
+  "keywords": [
+    "node-red",
+    "shtc3",
+    "temperature and humidity sensor",
+    "rakwireless"
+  ],
+  "dependencies": {
+    "i2c-bus": "^5.2"
+  },
+  "node-red": {
+    "nodes": {
+      "shtc3_i2c": "./shtc3/shtc3_node.js"
+    }
+  }
+}

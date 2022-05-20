@@ -1,0 +1,73 @@
+[
+    {
+        "id": "bced94699edbe2ef",
+        "type": "tab",
+        "label": "rak1903-read",
+        "disabled": false,
+        "info": "This is an example flow that read from rak1903/opt3001 every 1 second.",
+        "env": []
+    },
+    {
+        "id": "2c60d9550d5105ce",
+        "type": "opt3001",
+        "z": "bced94699edbe2ef",
+        "name": "",
+        "i2c_device_number": 1,
+        "i2c_address": "0x44",
+        "rangeNumber": "1100",
+        "conversionTime": "1",
+        "conversionMode": "10",
+        "x": 320,
+        "y": 80,
+        "wires": [
+            [
+                "6a0c4701f576b02f"
+            ]
+        ]
+    },
+    {
+        "id": "6a0c4701f576b02f",
+        "type": "debug",
+        "z": "bced94699edbe2ef",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 490,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "cd97c9e6b9760ce3",
+        "type": "inject",
+        "z": "bced94699edbe2ef",
+        "name": "every 1 second",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "1",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 140,
+        "y": 80,
+        "wires": [
+            [
+                "2c60d9550d5105ce"
+            ]
+        ]
+    }
+]
