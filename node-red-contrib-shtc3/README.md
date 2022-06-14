@@ -1,18 +1,22 @@
-node-red-contrib-shtc3
+@rakwireless/shtc3
 ==================================
 
-A node-red node providing access to a shtc3 temperature and humidity sensor.
+A Node-RED node providing access to an SHTC3 temperature and humidity sensor.
 
-**Tips**: Please make sure that user has the permissions to access  i2c devices. 
+[![version](https://img.shields.io/npm/v/@rakwireless/shtc3.svg?logo=npm)](https://www.npmjs.com/package/@rakwireless/shtc3)
+[![downloads](https://img.shields.io/npm/dm/@rakwireless/shtc3.svg)](https://www.npmjs.com/package/@rakwireless/shtc3)
 
----
+## Install from Node-RED
 
-## Install
+From within NodeRED, visit the top right menu, select `Manage palette` and then the `Install` tab. Look for `@rakwireless/shtc3` and install it.
 
-Please install `node-red-contrib-shtc3` node with the following commands. If you use docker of Node-RED, you may need to replace `~/.node-red` with `/usr/src/node-red`.
+
+## Manual installation (development)
+
+Please install `@rakwireless/shtc3` node with the following commands. If you use docker of Node-RED, you may need to replace `~/.node-red` with `/usr/src/node-red`.
 
 ```
-git clone https://git.rak-internal.net/product-rd/gateway/wis-developer/rak7391/node-red-nodes.git
+git clone https://github.com/RAKWireless/node-red-nodes.git
 ```
 
 ```
@@ -23,9 +27,11 @@ cp -rf node-red-nodes/node-red-contrib-shtc3 ~/.node-red/node_modules
 cd ~/.node-red/node_modules/node-red-contrib-shtc3 && npm install
 ```
 
-**Tips:**  After `node-red-contrib-shtc3` being installed,  **node-red should be restarted**, otherwise, the node cannot be found on the page.
+**Tips:**  After `@rakwireless/shtc3` being installed,  **Node-RED should be restarted**, otherwise the node cannot be found on the page.
 
 ## Usage
+
+**NOTE**: Please make sure that the user running Node-RED has the permissions to access I2C devices. 
 
 - **shtc3_i2c**
 
@@ -61,11 +67,9 @@ The output of the node is a payload contains `temperature` and `humidity` data.
 ```
 
 
-
 ## Example
 
-- [shtc3-read](examples/shtc3-read/README.md) -  Read temperature and humidity data from shtc3 sensor.
-
+- [shtc3-read](./node-red-contrib-shtc3/examples/shtc3-read) -  Read temperature and humidity data from shtc3 sensor.
 
 
 ## License
