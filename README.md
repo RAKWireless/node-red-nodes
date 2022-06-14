@@ -32,8 +32,3 @@ If you need to raise a pull request please read our [contribution guidelines](ht
 ## Copyright and license
 
 Copyright (c) 2022 RAKwireless, under MIT License.
-
-# Node Information
-
-**NPM name** - *File-link* - Description
-
