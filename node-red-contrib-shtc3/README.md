@@ -1,5 +1,4 @@
-@rakwireless/shtc3
-==================================
+# @rakwireless/shtc3
 
 A Node-RED node providing access to an SHTC3 temperature and humidity sensor.
 
@@ -69,7 +68,7 @@ The output of the node is a payload contains `temperature` and `humidity` data.
 
 ## Example
 
-- [shtc3-read](./node-red-contrib-shtc3/examples/shtc3-read) -  Read temperature and humidity data from shtc3 sensor.
+- [shtc3-read](https://github.com/RAKWireless/node-red-nodes/tree/master/node-red-contrib-shtc3/examples/shtc3-read) -  Read temperature and humidity data from shtc3 sensor.
 
 
 ## License

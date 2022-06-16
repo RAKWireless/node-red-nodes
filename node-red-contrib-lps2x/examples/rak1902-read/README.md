@@ -2,7 +2,7 @@
 
 ## 1. Introduction
 
-This guide explains how to create a flow and then use the node **node-red-contrib-lps2x** to read the data from RAK1902 barometer  sensor with RAK7391 board and RAK6421 Pi-Hat. 
+This guide explains how to create a flow and then use the node **Node-RED-contrib-lps2x** to read the data from RAK1902 barometer  sensor with RAK7391 board and RAK6421 Pi-Hat. 
 
 RAK1902 uses `i2c-1` of RAK7391 board.  
 
@@ -45,7 +45,7 @@ We can also connect RAK6421 to Raspberry pi 4B+.
 Please install `node-red-contrib-lps2x` node with the following commands. If you use docker of Node-RED, you may need to replace `~/.node-red` with `/usr/src/node-red`.
 
 ```
-git clone https://git.rak-internal.net/product-rd/gateway/wis-developer/rak7391/node-red-nodes.git
+git clone https://github.com/RAKWireless/node-red-nodes.git
 ```
 
 ```
@@ -56,7 +56,7 @@ cp -rf node-red-nodes/node-red-contrib-lps2x ~/.node-red/node_modules
 cd ~/.node-red/node_modules/node-red-contrib-lps2x && npm install
 ```
 
-**Tips:**  After `node-red-contrib-lps2x`  installed,  **node-red should be restarted**, otherwise, the node cannot be found on the page.
+**Tips:**  After `node-red-contrib-lps2x`  installed,  **Node-RED should be restarted**, otherwise, the node cannot be found on the page.
 
 ## 3. Run example
 

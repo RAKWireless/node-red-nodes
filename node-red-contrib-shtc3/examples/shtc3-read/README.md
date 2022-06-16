@@ -4,7 +4,7 @@
 
 ### 1.1 Shtc3
 
-This guide explains how to create a flow and then use the node **node-red-contrib-shtc3** to read the data of temperature and humidity  from shtc3 sensor.  Its pin-map is showed as follows.
+This guide explains how to create a flow and then use the node **Node-RED-contrib-shtc3** to read the data of temperature and humidity  from shtc3 sensor.  Its pin-map is showed as follows.
 
 ![image-20220321100549330](assets/image-shtc3.png)
 
@@ -35,7 +35,7 @@ There are two ways to use shtc3  sensor in this example:
 Please install `node-red-contrib-shtc3` node with the following commands. If you use docker of Node-RED, you may need to replace `~/.node-red` with `/usr/src/node-red`.
 
 ```
-git clone https://git.rak-internal.net/product-rd/gateway/wis-developer/rak7391/node-red-nodes.git
+git clone https://github.com/RAKWireless/node-red-nodes.git
 ```
 
 ```

@@ -2,7 +2,7 @@
 
 ## 1. Introduction
 
-This guide explains how to create a flow and then use the node **node-red-contrib-pi4ioe5v** to toggles an LED connected to `IO0_7` pin of PI4IOE5V96224 GPIO Expander in RAK7391 board.  PI4IOE5V96224 GPIO Expander use `i2c-1` of RAK7391 board to expand 24 IO pins.  Its pin-map is showed as follows.
+This guide explains how to create a flow and then use the node **Node-RED-contrib-pi4ioe5v** to toggles an LED connected to `IO0_7` pin of PI4IOE5V96224 GPIO Expander in RAK7391 board.  PI4IOE5V96224 GPIO Expander use `i2c-1` of RAK7391 board to expand 24 IO pins.  Its pin-map is showed as follows.
 
 ![image-20220302171903406](assets/image-20220302171903406.png)
 
@@ -31,7 +31,7 @@ Schematic diagram of LED and IO0_7 of PI4IOE5V96224  in RAK7391 is showed as fol
 Please install `node-red-contrib-pi4ioe5v` node with the following commands. If you use docker of Node-RED, you may need to replace `~/.node-red` with `/usr/src/node-red`.
 
 ```
-git clone https://git.rak-internal.net/product-rd/gateway/wis-developer/rak7391/node-red-nodes.git
+git clone https://github.com/RAKWireless/node-red-nodes.git
 ```
 
 ```

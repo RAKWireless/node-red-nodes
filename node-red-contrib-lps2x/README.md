@@ -1,16 +1,21 @@
-node-red-contrib-lps2x
-==================================
+# @rakwireless/lps2x
 
-A node-red node providing access to lps22hb or lps25hb I2C barometer sensor.
+Node-RED node providing access to lps22hb and lps25hb I2C barometer sensors.
 
----
+[![version](https://img.shields.io/npm/v/@rakwireless/lps2x.svg?logo=npm)](https://www.npmjs.com/package/@rakwireless/lps2x)
+[![downloads](https://img.shields.io/npm/dm/@rakwireless/lps2x.svg)](https://www.npmjs.com/package/@rakwireless/lps2x)
 
-## Install
+## Install from Node-RED
 
-Please install `node-red-contrib-lps2x` node with the following commands. If you use docker of Node-RED, you may need to replace `~/.node-red` with `/usr/src/node-red`.
+From within NodeRED, visit the top right menu, select `Manage palette` and then the `Install` tab. Look for `@rakwireless/lps2x` and install it.
+
+
+## Manual installation (development)
+
+Please install `@rakwireless/lps2x` node with the following commands. If you use docker of Node-RED, you may need to replace `~/.node-red` with `/usr/src/node-red`.
 
 ```
-git clone https://git.rak-internal.net/product-rd/gateway/wis-developer/rak7391/node-red-nodes.git
+git clone https://github.com/RAKWireless/node-red-nodes.git
 ```
 
 ```
@@ -21,7 +26,7 @@ cp -rf node-red-nodes/node-red-contrib-lps2x ~/.node-red/node_modules
 cd ~/.node-red/node_modules/node-red-contrib-lps2x && npm install
 ```
 
-**Tips:**  After `node-red-contrib-lps2x`  installed,  **node-red should be restarted**, otherwise, the node cannot be found on the page.
+**Tips:**  After `@rakwireless/lps2x`  installed,  **Node-RED should be restarted**, otherwise, the node cannot be found on the page.
 
 ## Usage
 
@@ -49,7 +54,7 @@ To get barometer  you just need to select the correct settings for your device a
 
 ## Examples
 
-[rak1902-read](examples/rak1902-read/README.md) - Read sensor data from RAK1902 every 5 seconds.
+[rak1902-read](https://github.com/RAKWireless/node-red-nodes/tree/master/node-red-contrib-lps2x/examples/rak1902-read) - Read sensor data from RAK1902 every 5 seconds.
 
 ## License
 

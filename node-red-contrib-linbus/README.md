@@ -1,17 +1,23 @@
-# node-red-contrib-linbus
+# @rakwireless/linbus
 
 A node-red-contrib-linbus module is able to parse and create LinBUS-compatible frames to be forwarded using a serial connection.
 
----
+[![version](https://img.shields.io/npm/v/@rakwireless/linbus.svg?logo=npm)](https://www.npmjs.com/package/@rakwireless/linbus)
+[![downloads](https://img.shields.io/npm/dm/@rakwireless/linbus.svg)](https://www.npmjs.com/package/@rakwireless/linbus)
 
-## Install
+## Install from Node-RED
 
-Please follow the steps below to install the  `node-red-contrib-linbus` module.
+From within NodeRED, visit the top right menu, select `Manage palette` and then the `Install` tab. Look for `@rakwireless/linbus` and install it.
+
+
+## Manual installation (development)
+
+Please follow the steps below to install the  `@rakwireless/linbus` module.
 
 first, you need download the source code of this module from our `node-red-nodes` repository
 
 ```
-git clone https://git.rak-internal.net/product-rd/gateway/wis-developer/rak7391/node-red-nodes.git
+git clone https://github.com/RAKWireless/node-red-nodes.git
 ```
 
 copy `node-red-contrib-linbus` folder to  `node_modules` folder, `node_modules`  folder is located in the root directory of your node-red install.
@@ -30,7 +36,7 @@ cd ~/.node-red/node_modules/node-red-contrib-linbus && npm install
 
 ## Usage
 
-`node-red-contrib-linbus` has two nodes,  `linbus-parse` node and `linbus-builder` node.  they  need to be used in combination with a serial port node, you must install `node-red-node-serialport` module first
+`@rakwireless/linbus` has two nodes,  `linbus-parse` node and `linbus-builder` node.  they  need to be used in combination with a serial port node, you must install `node-red-node-serialport` module first
 
 - ### linbus-parse
 
@@ -63,7 +69,7 @@ the payload is generated with an `inject` node, one thing to note is that the pa
 
 ## Examples
 
-[rak13005-linbus](examples/rak13005-linbus/README.md) - LinBUS communication using WisBlock LIN MODULE RAK13005 on RAK7391.
+[rak13005-linbus](https://github.com/RAKWireless/node-red-nodes/tree/master/node-red-contrib-linbus/examples/rak13005-linbus) - LinBUS communication using WisBlock LIN MODULE RAK13005 on RAK7391.
 
 
 

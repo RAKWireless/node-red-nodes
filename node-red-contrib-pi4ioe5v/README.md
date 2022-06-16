@@ -1,17 +1,25 @@
-# node-red-contrib-pi4ioe5v
+# @rakwireless/pi4ioe5v
 
-node-red-contrib-pi4ioe5v node is  IO expander Node-RED node running on raspberry pi.  Its chip is  PI4IOE5V96224 which can expand 24 IO pin with i2c interface.
+The @rakwireless/pi4ioe5v node is  IO expander Node-RED node running on raspberry pi.  
+
+[![version](https://img.shields.io/npm/v/@rakwireless/pi4ioe5v.svg?logo=npm)](https://www.npmjs.com/package/@rakwireless/pi4ioe5v)
+[![downloads](https://img.shields.io/npm/dm/@rakwireless/pi4ioe5v.svg)](https://www.npmjs.com/package/@rakwireless/pi4ioe5v)
+
+Its chip is  PI4IOE5V96224 which can expand 24 IO pin with i2c interface.
 
 ![image-20220302171903406](assets/image-20220302171903406.png)
 
-**Tips**: Please make sure that user of system has the permissions to access i2c device, or  you cannot get  the result you want when use  pi4ioe5v node.
+## Install from Node-RED
 
-## Install
+From within NodeRED, visit the top right menu, select `Manage palette` and then the `Install` tab. Look for `@rakwireless/pi4ioe5v` and install it.
 
-Please install `node-red-contrib-pi4ioe5v` node with the following commands. If you use docker of Node-RED, you may need to replace `~/.node-red` with `/usr/src/node-red`.
+
+## Manual installation (development)
+
+Please install `@rakwireless/pi4ioe5v` node with the following commands. If you use docker of Node-RED, you may need to replace `~/.node-red` with `/usr/src/node-red`.
 
 ```
-git clone https://git.rak-internal.net/product-rd/gateway/wis-developer/rak7391/node-red-nodes.git
+git clone https://github.com/RAKWireless/node-red-nodes.git
 ```
 
 ```
@@ -22,9 +30,11 @@ cp -rf node-red-nodes/node-red-contrib-pi4ioe5v ~/.node-red/node_modules
 cd ~/.node-red/node_modules/node-red-contrib-pi4ioe5v && npm install
 ```
 
-**Tips:**  After `node-red-contrib-pi4ioe5v` being installed,  **node-red should be restarted**, otherwise, the node cannot be found on the page.
+**Tips:**  After `@rakwireless/pi4ioe5v` being installed,  **Node-RED should be restarted**, otherwise, the node cannot be found on the page.
 
 ## Usage
+
+**NOTE**: Please make sure that user of system has the permissions to access i2c device, or  you cannot get  the result you want when use  pi4ioe5v node.
 
 Provides two nodes - one to receive IO state, and one to set IO state.
 
@@ -78,7 +88,7 @@ PI4IOE5VXXX IO expander output node. Set specific IO pin as  0 or 1.
 
 ## Example
 
-[pi4ioe5v-toggle-led](examples/pi4ioe5v-toggle-led/README.md) - The example shows how to toggle the LED which connects to IO0_7 pin of PI4IOE5V96224.
+[pi4ioe5v-toggle-led](https://github.com/RAKWireless/node-red-nodes/tree/master/node-red-contrib-pi4ioe5v/examples/pi4ioe5v-toggle-led) - The example shows how to toggle the LED which connects to IO0_7 pin of PI4IOE5V96224.
 
 
 

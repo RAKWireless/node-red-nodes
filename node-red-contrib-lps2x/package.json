@@ -1,21 +1,30 @@
 {
   "name": "@rakwireless/lps2x",
   "version": "1.0.0",
-  "description": "A node-red node providing access to lps22hb or lps25 I2C barometer sensor",
+  "description": "A Node-RED node providing access to lps22hb or lps25 I2C barometer sensor",
   "author": "rakwireless.com",
   "license": "MIT",
   "keywords": [
     "node-red",
-    "lps22hb/lps25",
-    "Barometer sensor",
-    "rakwireless"
+    "rakwireless",
+    "i2c",
+    "lps22hb",
+    "lps25",
+    "sensor",
+    "pressure",
+    "barometer"
   ],
   "dependencies": {
     "i2c-bus": "^5.2"
   },
   "node-red": {
+    "version": ">=2.0.0",
     "nodes": {
       "lps2x_node": "./lps2x/lps2x_node.js"
     }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RAKWireless/node-red-nodes"
   }
 }

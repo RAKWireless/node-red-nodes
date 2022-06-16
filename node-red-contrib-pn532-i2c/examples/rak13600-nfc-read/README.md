@@ -2,7 +2,7 @@
 
 ## 1. Introduction
 
-This guide explains how to create a flow and then use the node **node-red-contrib-pn532-i2c** to test [RAK13600](https://store.rakwireless.com/products/rak13600-wisblock-nfc-reader) that use it to read id of RFID card and transfers the id to owner's name of RFID.  RAK13600 use `i2c-1` of RAK7391 board. 
+This guide explains how to create a flow and then use the node **Node-RED-contrib-pn532-i2c** to test [RAK13600](https://store.rakwireless.com/products/rak13600-wisblock-nfc-reader) that use it to read id of RFID card and transfers the id to owner's name of RFID.  RAK13600 use `i2c-1` of RAK7391 board. 
 
 ### 1.1 Requirements
 
@@ -39,7 +39,7 @@ Connect RAK13600  to RAK7391 board.
 Please install `node-red-contrib-pn532-i2c` node with the following commands. If you use docker of Node-RED, you may need to replace `~/.node-red` with `/usr/src/node-red`.
 
 ```
-git clone https://git.rak-internal.net/product-rd/gateway/wis-developer/rak7391/node-red-nodes.git
+git clone https://github.com/RAKWireless/node-red-nodes.git
 ```
 
 ```
@@ -50,7 +50,7 @@ cp -rf node-red-nodes/node-red-contrib-pn532-i2c ~/.node-red/node_modules
 cd ~/.node-red/node_modules/node-red-contrib-pn532-i2c && npm install
 ```
 
-**Tips:**  After `node-red-contrib-pn532-i2c` being installed,  **node-red should be restarted**, otherwise, the node cannot be found on the page.
+**Tips:**  After `node-red-contrib-pn532-i2c` being installed,  **Node-RED should be restarted**, otherwise, the node cannot be found on the page.
 
 ## 3. Run example
 

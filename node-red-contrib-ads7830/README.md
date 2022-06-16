@@ -1,18 +1,21 @@
-node-red-contrib-ads7830
-==================================
+# @rakwireless/ads7830
 
-A node-red node providing access to a ADS7830 I2C analog to digital converter.
+A Node-RED node providing access to a ADS7830 I2C analog to digital converter.
 
-**Tips**: Please make sure that user of system has the permissions to access i2c device, or  you cannot get  the result you want when use ads7830 node,  the result  will be `empty`.
+[![version](https://img.shields.io/npm/v/@rakwireless/ads7830.svg?logo=npm)](https://www.npmjs.com/package/@rakwireless/ads7830)
+[![downloads](https://img.shields.io/npm/dm/@rakwireless/ads7830.svg)](https://www.npmjs.com/package/@rakwireless/ads7830)
 
----
+## Install from Node-RED
 
-## Install
+From within NodeRED, visit the top right menu, select `Manage palette` and then the `Install` tab. Look for `@rakwireless/ads7830` and install it.
 
-Please install `node-red-contrib-ads7830` node with the following commands. If you use docker of Node-RED, you may need to replace `~/.node-red` with `/usr/src/node-red`.
+
+## Manual installation (development)
+
+Please install `@rakwireless/ads7830` node with the following commands. If you use docker of Node-RED, you may need to replace `~/.node-red` with `/usr/src/node-red`.
 
 ```
-git clone https://git.rak-internal.net/product-rd/gateway/wis-developer/rak7391/node-red-nodes.git
+git clone https://github.com/RAKWireless/node-red-nodes.git
 ```
 
 ```
@@ -23,9 +26,11 @@ cp -rf node-red-nodes/node-red-contrib-ads7830 ~/.node-red/node_modules
 cd ~/.node-red/node_modules/node-red-contrib-ads7830 && npm install
 ```
 
-**Tips:**  After `node-red-contrib-ads7830` being installed,  **node-red should be restarted**, otherwise, the node cannot be found on the page.
+**Tips:**  After `@rakwireless/ads7830` being installed,  **Node-RED should be restarted**, otherwise, the node cannot be found on the page.
 
 ## Usage
+
+**NOTE**: Please make sure that user of system has the permissions to access i2c device, or  you cannot get  the result you want when use ads7830 node,  the result  will be `empty`.
 
 To get a voltage or difference of voltage from a ADS7830  analog to digital converter just select the correct setting for your device and trigger the node.
 
@@ -59,7 +64,7 @@ To get a voltage or difference of voltage from a ADS7830  analog to digital conv
 
 ## Example
 
-[rak16001-read](examples/rak16001-read/README.md) - Extend RAK16001 in RAK7391 board and test it with NodeRed. 
+[rak16001-read](https://github.com/RAKWireless/node-red-nodes/tree/master/node-red-contrib-ads7830/examples/rak16001-read) - Extend RAK16001 in RAK7391 board and test it with NodeRed. 
 
 
 

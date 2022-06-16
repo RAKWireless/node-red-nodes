@@ -2,7 +2,7 @@
 
 ## 1. Introduction
 
-This guide explains how to create a flow and then use the node **node-red-contrib-ads7830** to read 8 channels of [rak16001](https://store.rakwireless.com/products/rak16001-wisblock-adc-module) every 5 seconds with single end mode. ADS7830 use `i2c-1` of RAK7391 board to add 8 single analog inputs or 4 differential analog input. 
+This guide explains how to create a flow and then use the node **Node-RED-contrib-ads7830** to read 8 channels of [rak16001](https://store.rakwireless.com/products/rak16001-wisblock-adc-module) every 5 seconds with single end mode. ADS7830 use `i2c-1` of RAK7391 board to add 8 single analog inputs or 4 differential analog input. 
 
 
 
@@ -31,7 +31,7 @@ Then we connect rak16001 with a DC power supply as follows. A0 of rak16001 conne
 Please install `node-red-contrib-ads7830` node with the following commands. If you use docker of Node-RED, you may need to replace `~/.node-red` with `/usr/src/node-red`.
 
 ```
-git clone https://git.rak-internal.net/product-rd/gateway/wis-developer/rak7391/node-red-nodes.git
+git clone https://github.com/RAKWireless/node-red-nodes.git
 ```
 
 ```
@@ -42,7 +42,7 @@ cp -rf node-red-nodes/node-red-contrib-ads7830 ~/.node-red/node_modules
 cd ~/.node-red/node_modules/node-red-contrib-ads7830 && npm install
 ```
 
-**Tips:**  After `node-red-contrib-ads7830`  installed,  **node-red should be restarted**, otherwise, the node cannot be found on the page.
+**Tips:**  After `node-red-contrib-ads7830`  installed,  **Node-RED should be restarted**, otherwise, the node cannot be found on the page.
 
 ## 3. Run example
 

@@ -1,17 +1,21 @@
-# node-red-contrib-ltr-390uv
+# @rakwireless/ltr-390uv
 
 A node providing access to ltr-390uv, measuring and calculating lux and uvi(ultraviolet index).  
 
-**Tips**: Please make sure that user has the permissions to access i2c devices, otherwise user can not read from the ltr-390uv chip. 
+[![version](https://img.shields.io/npm/v/@rakwireless/ltr-390uv.svg?logo=npm)](https://www.npmjs.com/package/@rakwireless/ltr-390uv)
+[![downloads](https://img.shields.io/npm/dm/@rakwireless/ltr-390uv.svg)](https://www.npmjs.com/package/@rakwireless/ltr-390uv)
 
----
+## Install from Node-RED
 
-## Install
+From within NodeRED, visit the top right menu, select `Manage palette` and then the `Install` tab. Look for `@rakwireless/ltr-390uv` and install it.
 
-Please install `node-red-contrib-ltr-390uv` node with the following commands. If you use docker of Node-RED, you may need to replace `~/.node-red` with `/usr/src/node-red`,
+
+## Manual installation (development)
+
+Please install `@rakwireless/ltr-390uv` node with the following commands. If you use docker of Node-RED, you may need to replace `~/.node-red` with `/usr/src/node-red`,
 
 ```
-git clone https://git.rak-internal.net/product-rd/gateway/wis-developer/rak7391/node-red-nodes.git
+git clone https://github.com/RAKWireless/node-red-nodes.git
 ```
 
 then copy `node-red-contrib-ltr-390uv` directory  to  the `node_modules` directory,
@@ -26,11 +30,13 @@ lastly, change to the `node-red-contrib-ltr-390uv` directory and install the nod
 cd ~/.node-red/node_modules/node-red-contrib-ltr-390uv && npm install
 ```
 
-**Tips:**  After the installation of  `node-red-contrib-ltr-390uv`  is finished, please restart your node-red service.  Otherwise, the node cannot be found/added to the new flow.
+**Tips:**  After the installation of `@rakwireless/ltr-390uv` is finished, please restart your Node-RED service.  Otherwise, the node cannot be found/added to the new flow.
 
 ## Usage
 
-To get the lux and uvi reading from the ltr-390uv,  you need to select the correct setting for `node-red-contrib-ltr-390uv` node.
+**NOTE**: Please make sure that user has the permissions to access i2c devices, otherwise user can not read from the ltr-390uv chip. 
+
+To get the lux and uvi reading from the ltr-390uv,  you need to select the correct setting for `@rakwireless/ltr-390uv` node.
 
 <img src="assets/ltr-390uv-setting.png" alt="ltr-390uv-setting" style="zoom:67%;" />
 
@@ -63,7 +69,7 @@ The output of the node is a payload contains the raw als data, raw uvs data,  th
 
 ## Examples
 
-- [rak12019-reading](examples/rak12019-reading/README.md) - Measure lux and uvi using WisBlock UV sensor RAK12019 from Node-RED.
+- [rak12019-reading](https://github.com/RAKWireless/node-red-nodes/tree/master/node-red-contrib-ltr-390uv/examples/rak12019-reading) - Measure lux and uvi using WisBlock UV sensor RAK12019 from Node-RED.
 
 
 

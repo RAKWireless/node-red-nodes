@@ -37,7 +37,7 @@ The easiest way to set up the hardware is to use the RAK6421 WisBlock Hat that e
 While the `node-red-contrib-ltr-390uv` hasn't been published, so you need to install it from our gitlib repository. Please install `node-red-contrib-ltr` node with the following commands. If you are using docker for Node-RED, you may need to replace `~/.node-red` with `/usr/src/node-red`,
 
 ```
-git clone https://git.rak-internal.net/product-rd/gateway/wis-developer/rak7391/node-red-nodes.git
+git clone https://github.com/RAKWireless/node-red-nodes.git
 ```
 
 then copy `node-red-contrib-ltr-390uv directory  to  the `node_modules directory,
@@ -52,7 +52,7 @@ lastly, change to the `node-red-contrib-ltr-390uv` directory and install the nod
 cd ~/.node-red/node_modules/node-red-contrib-ltr-390uv && npm install
 ```
 
-**Tips:**  After the installation of  `node-red-contrib-ltr-390uv`  is finished, please restart your node-red service/container(s).  Otherwise, the node cannot be found/added to the new flow.
+**Tips:**  After the installation of  `node-red-contrib-ltr-390uv`  is finished, please restart your Node-RED service/container(s).  Otherwise, the node cannot be found/added to the new flow.
 
 
 

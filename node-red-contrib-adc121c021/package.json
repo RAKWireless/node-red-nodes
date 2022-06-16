@@ -1,22 +1,27 @@
 {
   "name": "@rakwireless/adc121c021",
   "version": "1.0.0",
-  "description": "A node-red node providing access to the adc121c021 I2C analog to digital converter",
+  "description": "A Node-RED node providing access to the ADC121C021 I2C analog to digital converter",
   "author": "rakwireless.com",
   "license": "MIT",
   "keywords": [
     "node-red",
-    "adc121c021",
+    "rakwireless",
     "adc",
-    "analog to digital converter",
-    "rakwireless"
+    "i2c",
+    "adc121c021"
   ],
   "dependencies": {
-    "i2c-bus": "^5.2.0"
+    "i2c-bus": "^5.2"
   },
   "node-red": {
+    "version": ">=2.0.0",
     "nodes": {
       "adc121c021": "./adc121c021/adc121c021_node.js"
     }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RAKWireless/node-red-nodes"
   }
 }

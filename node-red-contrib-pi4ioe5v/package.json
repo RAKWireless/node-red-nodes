@@ -6,17 +6,23 @@
   "license": "MIT",
   "keywords": [
     "node-red",
-    "Pi",
-    "GPIO Expander",
-    "Pi4ioe5v96224",
-	"rakwireless"
+    "rakwireless",
+    "i2c",
+    "gpio",
+    "io",
+    "pi4ioe5v96224"
   ],
   "dependencies": {
-    "i2c-bus": "^5.2.0"
+    "i2c-bus": "^5.2"
   },
   "node-red": {
+    "version": ">=2.0.0",
     "nodes": {
       "pi4ioe5v": "./pi4ioe5v/ioExpander.js"
     }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RAKWireless/node-red-nodes"
   }
 }

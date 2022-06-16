@@ -38,12 +38,12 @@ The connection diagram should be like this.
 
 ### 2.2. Software
 
-- **node-red-contrib-linbus**
+- **Node-RED-contrib-linbus**
 
 Install the `node-red-contrib-linbus` moulde from our node-red-nodes repository , 
 
 ```plaintext
-git clone https://git.rak-internal.net/product-rd/gateway/wis-developer/rak7391/node-red-nodes.git
+git clone https://github.com/RAKWireless/node-red-nodes.git
 ```
 
 copy `node-red-contrib-linbus` folder to  `node_modules` folder, `node_modules`  folder is located in the root directory of your node-red install.
@@ -58,7 +58,7 @@ then go to the `node-red-contrib-linbus` folder  and run the installation comman
 cd ~/.node-red/node_modules/node-red-contrib-linbus && npm install
 ```
 
-- **node-red-node-serialport**
+- **Node-RED-node-serialport**
 
 In our flows, `node-red-contrib-linbus`  is used in combination with a serial port node, so we need to install`node-red-node-serialport` , run the following command in the root directory of your node-red install
 
