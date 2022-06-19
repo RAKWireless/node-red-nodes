@@ -174,7 +174,7 @@
 
 <script type="text/javascript">
 	RED.nodes.registerType('MCP PCF Out', { //mcp_pcf_out
-		category: 'output',
+		category: 'wisblock',
 		color: '#f19800',
 		defaults: {
 			name: { value: "" },
@@ -186,7 +186,7 @@
 		outputs: 0,
 		inputLabels: "turn on/off one bit or All0 All1",
 		outputLabels: ["msg of success"],
-		icon: "font-awesome/fa-ticket",
+		icon: "RAKwireless-icon.svg",
 		align: 'right',
 		label: function () {
 			if (this.name) 	{return this.name + "»" ;}
