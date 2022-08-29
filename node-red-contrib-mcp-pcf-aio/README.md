@@ -1,21 +1,18 @@
-# @rakwireless/mcp-pcf-aio
+# node-red-contrib-mcp-pcf-aio
 
 A Node-Red node for 16-Bit I/O Expander MCP23017 chip and 8-Bit I/O Expander PCF8574 chip.
 
-## Install from Node-RED
+## Install
 
-From within NodeRED, visit the top right menu, select `Manage palette` and then the `Install` tab. Look for `@rakwireless/mcp-pcf-aio` and install it.
-
-<img src="assets/install.png" alt="install" style="zoom: 50%;" />
-
-
-## Manual installation (development)
-
-@rakwireless/mcp-pcf-aio will be published to the Node-RED Library by [RAKwireless](https://www.rakwireless.com/en-us), then you can run the following command in the root directory of your node-red install:
+node-red-contrib-mcp-pcf-aio will be published to the Node-RED Library by [RAKwireless](https://www.rakwireless.com/en-us), then you can run the following command in the root directory of your node-red install:
 
 ```
 npm install @rakwireless/mcp-pcf-aio
 ```
+
+Another way to install this node is from editor window, open the main menu on the right, select  the `Manage Palette` option,  search  @rakwireless/mcp-pcf-aio modules in the `Install` tab and install it.
+
+<img src="assets/install.png" alt="install" style="zoom: 50%;" />
 
 
 
@@ -45,7 +42,7 @@ There is a global (hidden) `MCP-PCF-chip` node you can set, with following optio
 
 ## Example
 
-[mcp-pcf-aio-examle.json](https://github.com/RAKWireless/node-red-nodes/blob/master/node-red-contrib-mcp-pcf-aio/examples/mcp-pcf-aio-examle.json)  - The example shows how to Control LED using [RAK14003 WisBlock LED Bar Graph Module](https://docs.rakwireless.com/Product-Categories/WisBlock/RAK14003/Overview/).
+[mcp-pcf-aio-examle.json](example/mcp-pcf-aio-examle.json)  - The example shows how to Control LED using [RAK14003 WisBlock LED Bar Graph Module](https://docs.rakwireless.com/Product-Categories/WisBlock/RAK14003/Overview/).
 
 
 
