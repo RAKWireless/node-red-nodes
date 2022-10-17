@@ -1,0 +1,131 @@
+[
+    {
+        "id": "f6f2187d.f17ca8",
+        "type": "tab",
+        "label": "rak13600-nfc-example",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "6d79769c63dc01ee",
+        "type": "pn532_i2c_read",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "config": "319738ef340d44df",
+        "block": "4",
+        "x": 340,
+        "y": 220,
+        "wires": [
+            [
+                "60f33166dedcccb1"
+            ]
+        ]
+    },
+    {
+        "id": "61c3d0b1b4d8e2fe",
+        "type": "inject",
+        "z": "f6f2187d.f17ca8",
+        "name": "trigger",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 110,
+        "y": 220,
+        "wires": [
+            [
+                "6d79769c63dc01ee"
+            ]
+        ]
+    },
+    {
+        "id": "60f33166dedcccb1",
+        "type": "debug",
+        "z": "f6f2187d.f17ca8",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 580,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "6a049f677768c210",
+        "type": "pn532_i2c_write",
+        "z": "f6f2187d.f17ca8",
+        "name": "",
+        "config": "319738ef340d44df",
+        "block": "4",
+        "x": 340,
+        "y": 300,
+        "wires": [
+            [
+                "e7ea0f3ba1e236d1"
+            ]
+        ]
+    },
+    {
+        "id": "3ffa3d2dd146ba6d",
+        "type": "inject",
+        "z": "f6f2187d.f17ca8",
+        "name": "data",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]",
+        "payloadType": "bin",
+        "x": 110,
+        "y": 300,
+        "wires": [
+            [
+                "6a049f677768c210"
+            ]
+        ]
+    },
+    {
+        "id": "e7ea0f3ba1e236d1",
+        "type": "debug",
+        "z": "f6f2187d.f17ca8",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 580,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "319738ef340d44df",
+        "type": "pn532_i2c_config",
+        "busNum": "1",
+        "addr": "0x24"
+    }
+]

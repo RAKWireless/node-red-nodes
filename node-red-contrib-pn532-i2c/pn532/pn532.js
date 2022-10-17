@@ -123,27 +123,27 @@ const _FRAME_START = [0x00, 0x00, 0xFF];
 module.exports = class PN532 {
     constructor(debug, irq_pin, reset_pin) {
         /* Create an instance of the PN532 class */
-		let self = this;
+        let self = this;
         self.low_power = true;
-        if(!debug) {
-			debug = false;
-		}
+        if (!debug) {
+            debug = false;
+        }
         self.debug = debug
-		if(!irq_pin) {
-			irq_pin = -1;
-		}
-		self._irq = irq_pin;
-		if(!reset_pin) {
-			reset_pin = -1;
-		}
+        if (!irq_pin) {
+            irq_pin = -1;
+        }
+        self._irq = irq_pin;
+        if (!reset_pin) {
+            reset_pin = -1;
+        }
         self._reset_pin = reset_pin;
     }
 
-   _read_data(count) {
+    _read_data(count) {
         // Read raw data from device, not including status bytes:
         // Subclasses MUST implement this!
         throw new Error('Subclasses MUST implement this!');
-   }
+    }
 
     _write_data(framebytes) {
         // Write raw bytestring data to device, not including status bytes:
@@ -165,9 +165,9 @@ module.exports = class PN532 {
     delay_ms(milliseconds) {
         var start = new Date().getTime();
         for (var i = 0; i < 1e7; i++) {
-          if (new Date().getTime() - start > milliseconds) {
-            break;
-          }
+            if (new Date().getTime() - start > milliseconds) {
+                break;
+            }
         }
     }
 
@@ -187,8 +187,8 @@ module.exports = class PN532 {
 
     _write_frame(data) {
         let self = this;
-        /* Write a frame to the PN532 with the specified data bytearray. */ 
-        if(data && data.length && data.length >= 255 || data.length <= 1) {
+        /* Write a frame to the PN532 with the specified data bytearray. */
+        if (data && data.length && data.length >= 255 || data.length <= 1) {
             throw new Error("Data must be array of 1 to 255 bytes.");
         }
         // Build frame to send as:
@@ -207,10 +207,10 @@ module.exports = class PN532 {
         frame[3] = length & 0xFF;
         frame[4] = (~length + 1) & 0xFF;
 
-        frame = Buffer.concat([frame,data]);
+        frame = Buffer.concat([frame, data]);
 
         let checksum = 0;
-        for(let i=0; i<length; i++) {
+        for (let i = 0; i < length; i++) {
             checksum += data[i];
         }
 
@@ -222,7 +222,7 @@ module.exports = class PN532 {
 
         // if (self.debug)
         //     print("Write frame: ", [hex(i) for i in frame])
-        
+
         // Send frame.
         self._write_data(frame)
     }
@@ -248,19 +248,19 @@ module.exports = class PN532 {
         }
 
         if (response[offset] != 0xFF)
-             throw new Error("Response frame preamble does not contain 0x00FF!");
+            throw new Error("Response frame preamble does not contain 0x00FF!");
         offset += 1
         if (offset >= response.length)
-             throw new Error("Response contains no data!");
-        
+            throw new Error("Response contains no data!");
+
         //Check length & length checksum match.
         let frame_len = response[offset];
         if ((frame_len + response[offset + 1]) & 0xFF != 0)
-             throw new Error("Response length checksum did not match length!");
-        
+            throw new Error("Response length checksum did not match length!");
+
         // Check frame checksum value matches bytes.
         let checksum = 0;
-        for(let i=0; i < frame_len+1; i++) {
+        for (let i = 0; i < frame_len + 1; i++) {
             checksum += response[offset + 2 + i];
         }
         checksum = checksum & 0xFF;
@@ -282,18 +282,18 @@ module.exports = class PN532 {
         response is available within the timeout.
          */
         let self = this;
-        if(!response_length) {
+        if (!response_length) {
             response_length = 0;
         }
-        if(!params) {
-            params=[];
+        if (!params) {
+            params = [];
         }
-        if(!timeout) {
+        if (!timeout) {
             timeout = 1;
         }
 
         if (!self.send_command(command, params, timeout)) {
-            return null
+            return null;
         }
 
         return self.process_response(command, response_length, timeout)
@@ -303,7 +303,7 @@ module.exports = class PN532 {
         /* Send specified command to the PN532 and wait for an acknowledgment.
         Will wait up to timeout seconds for the acknowlegment and return true.
         If no acknowlegment is received, False is returned.
-         */ 
+         */
         let self = this;
         if (self.low_power)
             self._wakeup()
@@ -312,15 +312,15 @@ module.exports = class PN532 {
         let data = Buffer.alloc(2 + params.length);
         data[0] = _HOSTTOPN532;
         data[1] = command & 0xFF;
-        
-        for(let i=0; i<params.length; i++) {
+
+        for (let i = 0; i < params.length; i++) {
             data[2 + i] = params[i];
         }
-        
+
         // Send frame and wait for response.
         try {
             self._write_frame(data);
-        } catch(e) {
+        } catch (e) {
             return false;
         }
 
@@ -348,20 +348,20 @@ module.exports = class PN532 {
         if (!self._wait_ready(timeout))
             return null;
 
-        if(!timeout) {
+        if (!timeout) {
             timeout = 1;
         }
-        if(!response_length) {
+
+        if (!response_length) {
             response_length = 0;
         }
-        
         // Read response bytes.
         let response = self._read_frame(response_length + 2);
-        
+
         // Check that response is for the called function.
-        if(!(response[0] == _PN532TOHOST && response[1] == (command + 1)))
-             throw new Error("Received unexpected command response!")
-        
+        if (!(response[0] == _PN532TOHOST && response[1] == (command + 1)))
+            throw new Error("Received unexpected command response!")
+
         // Return response data.
         return response.slice(2);
     }
@@ -372,15 +372,15 @@ module.exports = class PN532 {
         instead. Returns true if the PN532 was powered down successfully or
         False if not. */
         let self = this;
-        if (self._reset_pin){  // Hard Power Down if the reset pin is connected
+        if (self._reset_pin) {  // Hard Power Down if the reset pin is connected
             self._reset_pin.value = false;
             self.low_power = true;
-        } else{
+        } else {
             // Soft Power Down otherwise. Enable wakeup on I2C, SPI, UART
             response = self.call_function(_COMMAND_POWERDOWN, 0, [0xB0, 0x00], 1)
             self.low_power = (response[0] == 0x00);
         }
-        
+
         self.delay_ms(5);
         return self.low_power;
     }
@@ -388,16 +388,16 @@ module.exports = class PN532 {
     firmware_version() {
         /* Call PN532 GetFirmwareVersion function and return a tuple with the IC,
         Ver, Rev, and Support values.
-         */ 
+         */
         let self = this;
         let response = self.call_function(_COMMAND_GETFIRMWAREVERSION, 4, [], 0.5);
-        if(!response)
+        if (!response)
             throw new Error("timeout");
         return response;
     }
 
     SAM_configuration() {
-        /* Configure the PN532 to read MiFare cards. */ 
+        /* Configure the PN532 to read MiFare cards. */
         // Send SAM configuration command with configuration for:
         //  - 0x01, normal mode
         //  - 0x14, timeout 50ms * 20 = 1 second
@@ -414,10 +414,10 @@ module.exports = class PN532 {
         otherwise a bytearray with the UID of the found card is returned.
          */
         let self = this;
-        if(!card_baud) {
-            card_baud= _MIFARE_ISO14443A;
+        if (!card_baud) {
+            card_baud = _MIFARE_ISO14443A;
         }
-        if(!timeout) {
+        if (!timeout) {
             timeout = 1;
         }
         // Send passive read command for 1 card.  Expect at most a 7 byte UUID.
@@ -436,17 +436,17 @@ module.exports = class PN532 {
         is currently present use `read_passive_target` instead.
          */
         let self = this;
-        if(!card_baud) {
-            card_baud= _MIFARE_ISO14443A;
+        if (!card_baud) {
+            card_baud = _MIFARE_ISO14443A;
         }
-        if(!timeout) {
+        if (!timeout) {
             timeout = 1;
         }
         // Send passive read command for 1 card.  Expect at most a 7 byte UUID.
         let response;
         try {
             response = self.send_command(_COMMAND_INLISTPASSIVETARGET, [0x01, card_baud], timeout)
-        } catch(e) {
+        } catch (e) {
             return false;  // _COMMAND_INLISTPASSIVETARGET failed
         }
         return response;
@@ -463,18 +463,18 @@ module.exports = class PN532 {
         card's UID. This reduces the amount of time spend checking for a card.
          */
         let self = this;
-        if(!timeout) {
+        if (!timeout) {
             timeout = 1;
         }
         let response = self.process_response(_COMMAND_INLISTPASSIVETARGET, 30, timeout);
         // If no response is available return null to indicate no card is present.
-        if(!response)
+        if (!response)
             return null;
         // Check only 1 card with up to a 7 byte UID is present.
-        if(response[0] != 0x01)
-             throw new Error("More than one card detected!")
-        if(response[5] > 7)
-             throw new Error("Found card with unexpectedly long UID!")
+        if (response[0] != 0x01)
+            throw new Error("More than one card detected!")
+        if (response[5] > 7)
+            throw new Error("Found card with unexpectedly long UID!")
         // Return UID of card.
         return response.slice(6, 6 + response[5]);
     }
@@ -486,16 +486,22 @@ module.exports = class PN532 {
         MIFARE_CMD_AUTH_A or MIFARE_CMD_AUTH_B), and key should be a byte array
         with the key data.  Returns true if the block was authenticated, or False
         if not authenticated.
-         */ 
+         */
+        let self = this;
         // Build parameters for InDataExchange command to authenticate MiFare card.
-        let params = Buffer.alloc(3);
+        let params = [];
         params[0] = 0x01;  // Max card numbers
         params[1] = key_number & 0xFF;
         params[2] = block_number & 0xFF;
-
-        params = Buffer.concat(params, key);
-        params = Buffer.concat(params, uid);
-
+        for (var i = 0; i < key.length; i++) {
+            params.push(key[i]);
+        }
+        for (var i = 0; i < uid.length; i++) {
+            params.push(uid[i]);
+        }
+        //a = a.concat(params, key);
+        //b = b.concat(a, uid);
+        console.log(params);
         // Send InDataExchange request and verify response is 0x00.
         let response = self.call_function(
             _COMMAND_INDATAEXCHANGE, 1, params, 1
@@ -514,6 +520,7 @@ module.exports = class PN532 {
         let response = self.call_function(
             _COMMAND_INDATAEXCHANGE, 17, [0x01, MIFARE_CMD_READ, block_number & 0xFF], 1
         );
+
         // Check first response is 0x00 to show success.
         if (response[0] != 0x00)
             return null;
@@ -531,13 +538,15 @@ module.exports = class PN532 {
         if (!data || data.length != 16) {
             throw new Error("Data must be an array of 16 bytes!");
         }
-        
+
         // Build parameters for InDataExchange command to do MiFare classic write.
-        let params = Buffer.alloc(3);
+        let params = [];
         params[0] = 0x01;  // Max card numbers
         params[1] = MIFARE_CMD_WRITE;
         params[2] = block_number & 0xFF;
-        params = Buffer.concat(params, data);
+        for (var i = 0; i < data.length; i++) {
+            params.push(data[i]);
+        }
 
         // Send InDataExchange request.
         let response = self.call_function(_COMMAND_INDATAEXCHANGE, 1, params);
@@ -552,7 +561,7 @@ module.exports = class PN532 {
         otherwise False is returned.
          */
         let self = this;
-        if(!data || data.length != 4) {
+        if (!data || data.length != 4) {
             throw new Error("Data must be an array of 4 bytes!");
         }
 
@@ -562,7 +571,7 @@ module.exports = class PN532 {
         params[1] = MIFARE_ULTRALIGHT_CMD_WRITE;
         params[2] = block_number & 0xFF;
         params = Buffer.concat(params, data);
-        
+
         // Send InDataExchange request.
         let response = self.call_function(
             _COMMAND_INDATAEXCHANGE, 1, params, 1

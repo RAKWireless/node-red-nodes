@@ -1,52 +1,119 @@
-<script type="text/x-red" data-template-name="pn532_i2c">
-    <div class="form-row">
-        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
-        <input type="text" id="node-input-name" placeholder="Name">
-    </div>
-
-    <div class="form-row">
-        <label for="node-input-i2c_device_number"><i class="fa fa-cog"></i> /dev/i2c-?</label>
-        <input type="text" id="node-input-i2c_device_number" style="width: 30%" placeholder="1">
-    </div>
-
-    <div class="form-row">
-        <label for="node-input-i2c_address"><i class="fa fa-cog"></i> i2c Address</label>
-        <input type="text" id="node-input-i2c_address" value="0x24" readonly>
-    </div>
-</script>
-
-<script type="text/x-red" data-help-name="pn532_i2c">
-    <p>A node-red node providing access to PN532 to read UID of RFID card.</p>
-    <p><strong>Name:</strong><br/>
-    Define the msg name if you wish to change the name displayed on the node.</p>
-    <p><strong>/dev/i2c-?</strong><br/>
-    The i2c Device # - Device number by default is set to 1. This is the number for most current raspberry pi's. i2c device numbers can range from 0 to 256.</p>
-    <p><strong>i2c Address:</strong><br/>
-    The Address of pn532 is 0x24 which can not be changed. </p>
-</script>
-
 <script type="text/javascript">
-    RED.nodes.registerType("pn532_i2c", {
-        category: "wisblock",
+    RED.nodes.registerType("pn532_i2c_config", {
+        category: "config",
         defaults: {
-            name: {value:""},
-            i2c_device_number: {value:1,validate:RED.validators.number()},
-            i2c_address: {value:"0x24"}
+            busNum: { value: "1" },
+            addr: { value: "0x24" }
         },
-        color:"#F19800",
-        inputs: 1,
-        outputs: 1,
+        color: "#F19800",
         icon: "RAKwireless-icon.svg",
-        label: function() {
-            return this.name || "pn532_i2c";
+        label: function () {
+            return this.name || "pn532_i2c_config";
         },
-        labelStyle: function() {
+        labelStyle: function () {
             return this.name ? "node_label_italic" : "";
         },
-        oneditprepare: function() {
-            this.i2c_device_number = !this.i2c_device_number ? 1 : this.i2c_device_number;
+        oneditprepare: function () {
         },
         oneditsave: function () {
         }
     });
+</script>
+
+<script type="text/x-red" data-template-name="pn532_i2c_config">
+
+    <div class="form-row">                                                                                 
+                <label for="node-config-input-busNum"><i class="icon-bookmark"></i> I2C Bus Number</label>     
+                <input type="text" id="node-config-input-busNum">                             
+    </div>  
+                                                                                         
+    <div class="form-row">                                                               
+        <label for="node-config-input-i2c_address"><i class="icon-bookmark"></i> I2C Address</label>
+        <input type="text" id="node-config-input-addr">
+    </div>
+                                         
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType("pn532_i2c_read", {
+        category: "wisblock",
+        defaults: {
+            name: { value: "" },
+            config: { type: "pn532_i2c_config", required: true },
+            block: { value: "4" }
+        },
+        color: "#F19800",
+        inputs: 1,
+        outputs: 1,
+        icon: "RAKwireless-icon.svg",
+        label: function () {
+            return this.name || "pn532_i2c_read";
+        },
+        labelStyle: function () {
+            return this.name ? "node_label_italic" : "";
+        },
+        oneditprepare: function () {
+        },
+        oneditsave: function () {
+        }
+    });                                                                                   
+</script>
+
+<script type="text/x-red" data-template-name="pn532_i2c_read">
+    <div class="form-row">                                                               
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>              
+        <input type="text" id="node-input-name" placeholder="Name">                      
+    </div>                                                                               
+                                                                                         
+    <div class="form-row">                                                               
+        <label for="node-input-config"><i class="fa fa-cog"></i> Config</label>          
+        <input type="text" id="node-input-config">                                       
+    </div>                                                                               
+                                                                                         
+    <div class="form-row">                                                               
+        <label for="node-input-block"><i class="fa fa-cog"></i> Block Number</label>            
+        <input type="text" id="node-input-block">                                        
+    </div>                                                                               
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType("pn532_i2c_write", {
+        category: "wisblock",
+        defaults: {
+            name: { value: "" },
+            config: { type: "pn532_i2c_config", required: true },
+            block: { value: "4" }
+        },
+        color: "#F19800",
+        inputs: 1,
+        outputs: 1,
+        icon: "RAKwireless-icon.svg",
+        label: function () {
+            return this.name || "pn532_i2c_write";
+        },
+        labelStyle: function () {
+            return this.name ? "node_label_italic" : "";
+        },
+        oneditprepare: function () {
+        },
+        oneditsave: function () {
+        }
+    });                                                                                                   
+</script>
+
+<script type="text/x-red" data-template-name="pn532_i2c_write">
+    <div class="form-row">                                                                                
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>                               
+        <input type="text" id="node-input-name" placeholder="Name">                                       
+    </div>                                                                                                
+                                                                                                          
+    <div class="form-row">                                                                                
+        <label for="node-input-config"><i class="fa fa-cog"></i> Config</label>                           
+        <input type="text" id="node-input-config">                                                        
+    </div>                                                                                                
+                                                                                                          
+    <div class="form-row">                                                                                
+        <label for="node-input-block"><i class="fa fa-cog"></i> Block Number</label>                             
+        <input type="text" id="node-input-block">                                                         
+    </div>                                                                                                
 </script>

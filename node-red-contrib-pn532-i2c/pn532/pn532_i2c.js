@@ -10,38 +10,38 @@ const _I2C_ADDRESS = 0x24;
 
 module.exports = class PN532_I2C extends PN532 {
     constructor(i2c_bus, i2cAddress, req, irq, reset, debug) {
-        if(!debug) {
+        if (!debug) {
             debug = false;
         }
-        if(!req) {
+        if (!req) {
             req = false;
         }
-        if(!irq) {
+        if (!irq) {
             irq = -1;
         }
-        if(!reset) {
+        if (!reset) {
             reset = -1;
         }
         super(debug, req, irq, reset);
 
-		// let self = this;
-		if (typeof (i2c_bus) == 'undefined') {
-		    i2c_bus = 1;
-		}
-		if (!i2cAddress) {
-		    i2cAddress = _I2C_ADDRESS;
-		}
-		this._address = i2cAddress;
-		
-		try {
-			this._wire = i2c.openSync(i2c_bus);
-		} catch(e) {
-			throw new Error('i2c_bus i2c-%d not exist!', i2c_bus);
-		}
+        // let self = this;
+        if (typeof (i2c_bus) == 'undefined') {
+            i2c_bus = 1;
+        }
+        if (!i2cAddress) {
+            i2cAddress = _I2C_ADDRESS;
+        }
+        this._address = i2cAddress;
+
+        try {
+            this._wire = i2c.openSync(i2c_bus);
+        } catch (e) {
+            throw new Error('i2c_bus i2c-%d not exist!', i2c_bus);
+        }
 
         this._req = req;
         this.debug = debug;
-        
+
         // this.reset()
         // _ = this.firmware_version();
     }
@@ -73,11 +73,11 @@ module.exports = class PN532_I2C extends PN532 {
         let status = Buffer.alloc(1)
         let timestamp = new Date().getTime();
         // while ((new Date().getTime() - timestamp) < timeout*1000) {
-        while ((new Date().getTime() - timestamp) < timeout*2000) {
+        while ((new Date().getTime() - timestamp) < timeout * 2000) {
             try {
                 self._wire.i2cReadSync(self._address, 1, status);
             }
-            catch(e) {
+            catch (e) {
                 continue;
             }
             if (status[0] == 0x01) {
@@ -97,13 +97,13 @@ module.exports = class PN532_I2C extends PN532 {
         self._wire.i2cReadSync(self._address, 1, frame);  // read status byte!
         if (frame[0] != 0x01)  // not ready
             throw new Error('busy !');
-        
+
         self._wire.i2cReadSync(self._address, count + 1, frame);  // ok get the data, plus statusbyte
 
         // if (self.debug) {
         //     console.log("Reading: ", [hex(i) for i in frame[1:]])
         // }
-        
+
         return frame.slice(1);  // don't return the status byte
     }
 
