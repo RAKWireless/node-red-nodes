@@ -107,9 +107,9 @@ module.exports = function (RED) {
                 let authenticated = sensor.mifare_classic_authenticate_block(uid, node.block, 0x61, key);
                 let ret = sensor.mifare_classic_write_block(node.block, msg.payload);
                 if (ret) {
-                    msg.payload = "Write OK!";
+                    msg.payload = {'error':0};
                 } else {
-                    msg.payload = "Write Failed!";
+                    msg.payload = {'error':1};
                 }
                 node.send(msg);
             }

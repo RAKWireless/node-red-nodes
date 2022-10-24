@@ -76,6 +76,16 @@
     </div>                                                                               
 </script>
 
+<script type="text/x-red" data-help-name="pn532_i2c_read">                                                
+    <p>Read the specified block data from a RFID/NFC card</p>                                             
+    <p><strong>Name:</strong><br/>                                                                        
+    Define the msg name if you wish to change the name displayed on the node.</p>                   
+    <p><strong>Config:</strong><br/>                                                                      
+    A global configuaration node for pn532 module, to set the i2c bus and i2c address.</p>                
+    <p><strong>Block:</strong><br/>                                                                       
+    Specify the blcok number that you want to read, the return value should be a buffer of 16 bytes.</p>  
+</script>    
+
 <script type="text/javascript">
     RED.nodes.registerType("pn532_i2c_write", {
         category: "wisblock",
@@ -116,4 +126,14 @@
         <label for="node-input-block"><i class="fa fa-cog"></i> Block Number</label>                             
         <input type="text" id="node-input-block">                                                         
     </div>                                                                                                
+</script>
+
+<script type="text/x-red" data-help-name="pn532_i2c_write">                                               
+    <p>Write the specified block data to a RFID/NFC card</p>                                              
+    <p><strong>Name:</strong><br/>                                                                        
+    Define the msg name if you wish to change the name displayed on the node.</p>                         
+    <p><strong>Config:</strong><br/>                                                                    
+    A global configuaration node for pn532 module, to set the i2c bus and i2c address.</p>                
+    <p><strong>Block:</strong><br/>                                                                     
+    Specify the block number that you want to write, the input data must be a buffer of 16 bytes, once write su
 </script>
