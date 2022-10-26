@@ -1,6 +1,6 @@
 {
   "name": "@rakwireless/my-pn532-i2c",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A node-red node providing access to PN532 to read UID of RFID card.",
   "author": "rakwireless.com",
   "license": "MIT",
